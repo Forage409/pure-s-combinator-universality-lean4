@@ -4,13 +4,16 @@ This repository contains the manuscripts, constructive Lean 4.33.1 formalization
 
 ## Primary Deliverables
 
-### 1. Archival Monographs
-- [`WOLFRAM_S_PRIZE_SUBMISSION.pdf`](WOLFRAM_S_PRIZE_SUBMISSION.pdf) — Typeset English monograph (Computer Modern / KaTeX mathematical typography).
+### 1. Archival Monographs & Standalone Short Note
+- [`SHORT_NOTE_Q7_Q31.pdf`](SHORT_NOTE_Q7_Q31.pdf) / [`SHORT_NOTE_Q7_Q31.tex`](SHORT_NOTE_Q7_Q31.tex) — Standalone 6-page note giving **short, automaton-free book proofs** of Questions 7 and 31 in *Dance of the Starlings* (eliminating both the 36-state $\mathcal{A}_{36}$ table and the 35-state $\mathcal{A}_{\mathrm{HN}}$ table, strengthening Question 31 to the infinite family $A A A S^j \neq_S A A A S^k$ for all $j \neq k$, and proving the exact atomic leaf-splitting colour law $T_n \in \mathrm{SN} \iff n \not\equiv 9 \pmod{10}$).
+- [`WOLFRAM_S_PRIZE_SUBMISSION.pdf`](WOLFRAM_S_PRIZE_SUBMISSION.pdf) — Full 46-page typeset English monograph (Computer Modern / KaTeX mathematical typography).
 - [`WOLFRAM_S_PRIZE_SUBMISSION.tex`](WOLFRAM_S_PRIZE_SUBMISSION.tex) — Complete $\LaTeX$ source of the English monograph, including the theorem-to-Lean concordance in Appendix A.
 - [`WOLFRAM_S_PRIZE_SUBMISSION.md`](WOLFRAM_S_PRIZE_SUBMISSION.md) — GitHub-flavored Markdown edition of the English monograph.
 
-### 2. Constructive Lean 4.33.1 Formalization (`153` Transitive Modules)
-- [`s_challenge_master_headline.lean`](s_challenge_master_headline.lean) — Unified entry point (`namespace SChallengeMaster`) importing all `153` formal Lean modules, proving exact abstract-syntax and one-step reduction bijections across all subsystem term types, and re-exporting all seven headline theorem suites.
+### 2. Constructive Lean 4.33.1 Formalization (`155` Modules + Standalone Book Proofs)
+- [`SIMPLIFIED_Q31_Q7_BOOK_PROOFS.lean`](SIMPLIFIED_Q31_Q7_BOOK_PROOFS.lean) — Zero-import, automaton-free Lean 4.33.1 formalization of the simplified proofs of Questions 31 and 7 (including Takahashi's Church–Rosser theorem from scratch; `#print axioms`: `[propext, Quot.sound]` only).
+- [`TRUST_ZERO_SPEC_CHECK.lean`](TRUST_ZERO_SPEC_CHECK.lean) — 60-second human-auditable specification & `#print axioms` check across all headline theorems.
+- [`s_challenge_master_headline.lean`](s_challenge_master_headline.lean) — Unified entry point (`namespace SChallengeMaster`) importing all formal Lean modules, proving exact abstract-syntax and one-step reduction bijections across all subsystem term types, and re-exporting all seven headline theorem suites.
 - [`check_formal.ps1`](check_formal.ps1) — Standalone PowerShell build and kernel-axiom verification script using the bundled Lean 4.33.1 toolchain (`tools/lean-4.33.1-windows/bin/lean.exe`). Every exported theorem compiles with zero `sorry`, zero `admit`, zero user-declared `axiom`, zero `native_decide`, and zero `Classical.choice` (`#print axioms` reports at most `[propext, Quot.sound]`, `[propext]`, or `[]`).
 
 Key formal subsystems imported by `s_challenge_master_headline.lean`:
