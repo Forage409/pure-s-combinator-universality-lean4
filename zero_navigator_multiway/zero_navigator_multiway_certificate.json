@@ -1,0 +1,319 @@
+{
+  "all_checks_passed": true,
+  "attack_line_1_multiway_reachability": {
+    "pointwise_term_reachability_decidable": true,
+    "protected_trie_nonhalting_shortcut_steps": 7,
+    "filin_dispatcher_nonhalting_shortcut_steps": 5,
+    "asymmetric_thunk_gating_obstruction": {
+      "closed_combinators_tested_sizes_1_to_9": 2047,
+      "b1_without_b0_witnesses": 0,
+      "lean_theorem": "ZeroNavigatorMultiway.multiway_no_exclusive_second_thunk"
+    },
+    "symmetric_dispatcher_gating_search": {
+      "open_dispatchers_tested": 1094,
+      "closed_bit_encodings_tested": 68,
+      "exclusive_dispatchers_found": 0
+    },
+    "pure_line_zachos_census_sizes_1_to_13": {
+      "total_terms_scanned": 290512,
+      "counts_by_size": {
+        "1..8": 0,
+        "9": 3,
+        "10": 6,
+        "11": 22,
+        "12": 57,
+        "13": 166
+      },
+      "total_pure_line_terms": 254,
+      "zachos_tagged_carrier_attractor_count": 53,
+      "hold_only_recursive_call_attractor_count": 201,
+      "escaping_pure_line_terms": 0,
+      "lean_stack_automaton_theorem": "ZeroNavigatorMultiway.pure_line_four_cases"
+    }
+  },
+  "attack_line_2_scott_question_30_and_question_31_core": {
+    "gk_cofinality_lean_theorem": "ZeroNavigatorMultiway.scott_q30_gk_cofinality",
+    "sn_target_decidability_lean_def": "ZeroNavigatorMultiway.decideConvClosedSN",
+    "rnf_structural_decomposition_lean_theorem": "ZeroNavigatorMultiway.rnf_convS_app_iff",
+    "exhaustive_berarducci_faithfulness_sizes_1_to_12": {
+      "total_closed_terms": 82500,
+      "sn_terms": 44583,
+      "non_sn_terms": 37917,
+      "distinct_non_sn_berarducci_trees": 12259,
+      "verified_finitarily_convertible_same_bet_pairs": 25658,
+      "non_convertible_same_bet_counterexamples": 0
+    },
+    "non_cancellative_merge_pairs_and_context_stress_test": {
+      "minimal_1arg_s_merge_pair": {
+        "N1": "S(S(SSS)S)S",
+        "N1_leaves": 7,
+        "N2": "S(SSS)(S(SSS)S)",
+        "N2_leaves": 9,
+        "common_nf_on_S_leaves": 17,
+        "non_sn_equal_bet_contexts_sizes_2_to_7": 702,
+        "verified_finitarily_convertible": 702,
+        "counterexamples": 0
+      },
+      "waldmann_order1_polymorphic_merge_pair": {
+        "U1": "S(S(SS)S)(SSS)",
+        "U1_leaves": 8,
+        "U2": "S(SS(SSS))(S(SSS)S)",
+        "U2_leaves": 11,
+        "polymorphic_join_steps": [
+          5,
+          6
+        ],
+        "non_sn_equal_bet_contexts_sizes_2_to_7": 2528,
+        "verified_finitarily_convertible": 2528,
+        "counterexamples": 0
+      }
+    },
+    "no_pure_arity2_bohm_tree_algebra": {
+      "reachable_sn_x_p_count": 44,
+      "productive_non_sn_states": [
+        [
+          38,
+          18
+        ],
+        [
+          38,
+          24
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          38,
+          33
+        ]
+      ],
+      "s_a_b_transitions_on_prod_nonsn": [
+        [
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            18
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            24
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            29
+          ],
+          [
+            38,
+            29
+          ]
+        ],
+        [
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            33
+          ],
+          [
+            38,
+            29
+          ]
+        ]
+      ]
+    }
+  }
+}

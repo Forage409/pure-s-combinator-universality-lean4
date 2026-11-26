@@ -1,0 +1,38 @@
+{
+  "status": "ALL_VERIFIED_100_PERCENT",
+  "hn_spine_horizon_max_compound_args": 5,
+  "case3_universal_ceiling": 5,
+  "case3_asymptotic_ceiling_rs_ge_2": 3,
+  "zachos_unified_6_strategies_b_states": 8,
+  "asn_ahn_boolean_gates": {
+    "asn_nand_count": 0,
+    "asn_xor_count": 0,
+    "asn_and_or_count": 0,
+    "asn_and_or_sample": [],
+    "ahn_nand_count": 0,
+    "ahn_xor_count": 0,
+    "ahn_and_or_count": 0
+  },
+  "lean_formal_audit": {
+    "lean_version": "4.33.1",
+    "olean_bytes": 7570744,
+    "theorems_audited": 14,
+    "axiom_lines": [
+      "'ZeroNavigatorFixedOrder.pure_line_all_six_coincide' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.zachos_unified_quadratic_trace' depends on axioms: [propext, Quot.sound]",
+      "'ZeroNavigatorFixedOrder.order_le_three_no_hnf2' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.closed_two_var_reduces_hnf2_iff' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.three_var_hnf_head_in_xy' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.inf_head_tail_frozen_iterLO' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.hn_spine_horizon_five' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.hn_spine_horizon_five_sharp' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.ro_right_non_sn_trap' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.deltaSN_no_direct_nand_or_xor' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.no_six_consecutive_case3_li' depends on axioms: [propext, Quot.sound]",
+      "'ZeroNavigatorFixedOrder.no_six_consecutive_case3_ri' depends on axioms: [propext, Quot.sound]",
+      "'ZeroNavigatorFixedOrder.five_consecutive_case3_sharp' depends on axioms: [propext]",
+      "'ZeroNavigatorFixedOrder.z_rs_strict_inc_case3' depends on axioms: [propext]"
+    ],
+    "zero_sorry_admit_custom_classical": true
+  }
+}

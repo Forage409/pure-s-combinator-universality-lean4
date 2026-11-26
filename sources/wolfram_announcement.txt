@@ -1,0 +1,341 @@
+1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge—Stephen Wolfram Writings
+≡
+Stephen Wolfram
+Writings
+ABOUT
+WRITINGS
+PUBLICATIONS
+MEDIA
+SCRAPBOOK
+CONTACT
+Recent
+|
+Categories
+Artificial Intelligence
+Big Picture
+Biology
+Companies & Business
+Computational Science
+Computational Thinking
+Data Science
+Education
+Future Perspectives
+Historical Perspectives
+Language & Communication
+Life & Times
+Life Science
+Mathematica
+Mathematics
+Multicomputation
+New Kind of Science
+New Technology
+Personal Analytics
+Philosophy
+Physics
+Ruliology
+Software Design
+Wolfram|Alpha
+Wolfram Language
+Other
+|
+×
+---
+title: "1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge—Stephen Wolfram Writings"
+description: "Wolfram offers $20,000 prize for proving, or disproving, that the S combinator alone can support universal computation."
+canonical_url: "https://writings.stephenwolfram.com/2021/06/1920-2020-and-a-20000-prize-announcing-the-s-combinator-challenge/"
+---
+Contents
+Top
+Hiding in Plain Sight for a Century?
+The Basic Setup
+The Operation of the S Combinator Challenge
+1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge
+1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge
+June 8, 2021
+Hiding in Plain Sight for a Century?
+On
+December 7, 1920, Moses Schönfinkel introduced the S and K combinators
+—and in doing so provided the first explicit example of a system capable of what we now call universal computation. A hundred years later—as I prepared to
+celebrate the centenary of combinators
+—I decided it was time to try using modern computational methods to see what we could now learn about combinators. And in doing this, I got a surprise.
+It’s already remarkable that S and K yield universal computation. But from my explorations I began to think that something even more remarkable might be true, and that in fact S alone might be sufficient to achieve universal computation. Or in other words, that just applying the rule
+S f g x
+→
+f
+[
+x
+][
+g
+[
+x
+]]
+over and over again might be all that’s needed to do any computation that can be done.
+I don’t know for sure that this is true, though I’ve
+amassed empirical evidence
+that seems to point in this direction. And today I’m announcing a prize of $20,000 (yes, the “20” goes with the 1920 invention of combinators, and the 2020 making of my conjecture) for proving—or disproving—that the S combinator alone can support universal computation.
+Why is it important to know? Obviously it’ll be neat if it turns out that hiding in plain sight for a century has been an even simpler basis for universal computation than we ever knew. But more than that, determining whether the S combinator alone is universal will provide an important additional data point in the effort to map out just where the threshold of universal computation lies.
+Practical computers have complicated and carefully designed CPUs. But is that complexity really needed to support universal computation? My
+explorations in the computational universe
+over the past 40 years have led me to the conclusion that it absolutely is not, and that in fact even among systems with the very simplest rules, universal computation is actually quite ubiquitous.
+I’ve developed a very general principle that I call the
+Principle of Computational Equivalence
+that implies that pretty much whenever we see behavior that isn’t in some sense obviously simple, then it will actually correspond to a computation that’s equivalent in sophistication to any other computation. And one of the many consequences of this principle is that it says computation universality should be ubiquitous.
+For more than 30 years I’ve been pushing to get explicit evidence about this, by proving (or disproving) that particular systems are computation universal. And from this have come two very excellent examples that help validate the Principle of Computational Equivalence:
+the rule 110 cellular automaton
+&#10005
+RulePlot[CellularAutomaton[110]]
+and the
+2,3 Turing machine
+:
+&#10005
+RulePlot[TuringMachine[{596440, 2, 3}]]
+Both these systems I identified as the simplest of their type that could conceivably be computation universal—and both I expected would actually be computation universal.
+But in both cases it was hard work to come up with an explicit proof. In the first case, the proof was part of my book
+A New Kind of Science
+(with much of the
+heavy lifting done by a then-research assistant of mine
+).  In the second case, I’d already “
+made the conjecture
+” in
+A New Kind of Science
+, but in
+2007 I decided
+to put up a
+prize for actually resolving it
+. And I was very pleased when, after just a few months,
+a proof was found, and the prize was won
+.
+So now I’m hoping something similar will happen in the S combinator case. I’m expecting that it will turn out to be computation universal, but it would perhaps be even more interesting if it was proved not to be.
+In the past one might have viewed proving that a simple system is (or is not) computation universal as a curiosity—something like solving a specific mathematical puzzle. But the Principle of Computational Equivalence—and all the science I’ve done as a result of exploring the computational universe—now places such a question in a broader context, and shows that far from being a curiosity, it’s actually quite central.
+For example, with computation universality comes
+computational irreducibility
+, and
+undecidability
+. And to know how common these are in systems in nature, in mathematics and in technology has great fundamental and practical significance for when predictions can be made, and what kinds of questions can be answered.
+Identifying the threshold of computation universality also has direct implications for making a molecular-scale computer, as well, for example, as in computer security, for knowing whether some part of some program is actually universal, so it can be programmed to do something bad.
+The Basic Setup
+In the usual S, K combinator setup one does computations by setting up an initial combinator expression that encodes the computation one wants to do, then one repeatedly applies the combinator rules until one
+gets to a fixed point
+that can be interpreted as the result of the computation. Of course, not all computations halt, and for computations that don’t halt, no fixed point will ever be reached.
+With the S
+combinator alone a direct input → output representation of computations won’t work.  The reason is that there is an
+elaborate, but finite, characterization
+of every S combinator expression that halts, and the existence of this characterization implies that halting S combinator evolutions don’t have enough richness to represent arbitrary computations.
+There are, however, plenty of non-halting S combinator evolutions. Here’s the very simplest of them:
+&#10005
+ResourceFunction["CombinatorEvolutionPlot"][
+Text[ResourceFunction["CombinatorPlot"][
+ReplaceAll[#, {s -> CombinatorS, k -> CombinatorK}],
+"CharactersLeftAssociative", "SKGlyphs" -> {s, k},
+"ApplicationGlyph" -> "\[NegativeVeryThinSpace]"]] & /@
+ResourceFunction["CombinatorEvolveList"][s[s][s][s[s]][s][s], 8,
+"SKGlyphs" -> {s, k}], "StatesDisplay"]
+And here are examples of the sequences of sizes of expressions
+obtained in various such evolutions
+:
+&#10005
+Grid[Partition[
+Labeled[ListStepPlot[
+Differences[
+ResourceFunction["SKCombinatorLeftmostOutermostLeafCounts"][#,
+1000, "SKGlyphs" -> {s, k}]], ImageSize -> 130,
+PlotRange -> All, Frame -> True, FrameTicks -> None,
+Filling -> Axis,
+FillingStyle -> Hue[0.56, 0.02, 0.9500000000000001],
+PlotStyle -> Hue[0.56, 0.68, 0.71]],
+Text[Style[ResourceFunction["CombinatorTraditionalForm"][#],
+12]]] & /@ {s[s[s[s[s]][s]]][s][s], s[s][s][s[s[s]]][s[s]],
+s[s][s][s[s[s[s][s]]]][s], s[s[s[s]][s[s[s]][s]]][s][s],
+s[s][s][s][s][s][s[s[s]]][s], s[s][s][s[s[s[s][s]][s]]][s],
+s[s[s][s][s[s]]][s[s][s]][s], s[s][s][s[s[s]]][s[s]][s[s]],
+s[s][s][s][s[s][s]][s][s][s][s], s[s][s][s[s[s[s[s]][s]][s]]][s],
+s[s][s][s[s][s[s[s[s][s]]]]][s],
+s[s[s[s]][s][s]][s[s[s]][s]][s]}, 4]]
+And potentially it’s possible to do computations by “piggy-backing” on these non-halting evolutions. Start with a specification of the computation you want to do. Now encode it as an initial condition for one of the infinite number of possible non-halting combinator evolutions. Then run the combinator evolution until some particular feature occurs. Then decode from the results at that stage the output from the computation.
+To prove that the S combinator is capable of supporting universal computation, one must show that something like this will work for any possible computation one wants to do. Or, in other words, one must show that an S combinator system
+can emulate some other system
+(say the S, K combinator one) that is already known to be universal. And by “emulate”, what we mean here is that a suitable “encoder”, “detector” and “decoder” can be found that will allow any evolution in the system being emulated to be mapped to a corresponding evolution in the S combinator system.
+There is an important caveat, however: one has to be sure that the encoder, detector and decoder are not themselves capable of universal computation. If one’s lucky, these will operate in sufficiently straightforward ways so that it’ll be obvious they’re not universal. But in general it’ll be nontrivial to demonstrate that they’re not universal. Depending on the setup, one approach may be to show that for all inputs they must halt in some bounded time.
+OK, so what if the S combinator system is not computation universal? How could one show that? One possibility would be to demonstrate that all, even infinite, evolutions have only a finite, or essentially finite, number of distinct forms. Another would be to establish that any “modulation” of such evolution must always die out in finite time, so that it must in effect correspond to a computation that halts.
+A slightly different approach would be to show that S combinator evolution can be “solved” to the point where its properties after any number of steps can be determined by some bounded computation.
+We’ve been talking about “doing computations” with combinators. But there’s a subtlety with that. Because there are in general
+many different possible evaluation orders
+for the combinator evolution. If the evolution halts, then it’s guaranteed that it’ll always reach the same fixed point, regardless of the order in which the evaluation was done. But if it doesn’t halt, there’s in general a whole
+multiway graph of possible sequences
+of results.
+So what does computation universality then mean? As I’ve
+discussed elsewhere
+, a strong potential definition is to ask that the multiway system generated by the combinator system can effectively emulate the multiway system generated, say, by a multiway (or nondeterministic) Turing machine. But a weaker alternative definition might just be to ask that one can find some path (i.e. some evaluation order) that can perform any given (deterministic) computation. Or one might for example have detector and decoder functions that can work on some—or all—branches, somehow always being able to reproduce the computation one wants.
+The Operation of the S Combinator Challenge
+I don’t know how long it’s going to take, or how hard it’s going to be, but I’m hoping that someday a message will arrive that successfully resolves the S Combinator Challenge. What will the message have to contain?
+The best case as far as I am concerned is specific
+Wolfram Language
+code that implements the solution. If the S combinator is in fact universal, then the code should provide a
+“compiler” that takes, say, a Turing machine or cellular automaton specification
+, and generates an S combinator initial condition, together with code for the “detector” and “decoder”. But how will we validate that this code is “correct”?
+It might conceivably be simple enough that it’s amenable to direct human analysis. But more likely it’s going to require some level of automated analysis. At first one might just do explicit testing. But then one might for example try to generate an
+automated proof
+that the detector and decoder always halt, and even perhaps determine an upper bound on how long this can take.
+If the S combinator is not universal, one might show this by having code that can “jump ahead” by any number of steps and explicitly determine the outcome, but that itself always halts. Or maybe one might have code that effectively implements what happens to any “modulation” of S combinator evolution—and then prove that this code leads to behavior that, say, always halts, or otherwise ultimately shows complete regularity.
+But maybe one won’t have explicit code that implements a solution, and instead one will only have an abstract proof of what’s possible. This could conceivably be in the form of a standard human-oriented mathematical proof. But I think it’s more likely it will be complicated enough that it has to be presented in a systematic computational way. And in the end, if it’s a proof it’ll have to start from certain axioms.
+What axioms can be used?
+One would hope that the “
+standard axioms of mathematics
+” will be enough. Perhaps only the Peano axioms will be needed. But I wouldn’t be surprised if transfinite induction were needed, requiring the axioms of set theory. And of course there are weird cases that could arise, where the proof will be possible, say, with one assumption about the Continuum Hypothesis, but not with the other.
+There are other weird things that could happen. For example, it might be possible to show that the complete infinite structure obtained by running the combinator evolution for an infinite time could reproduce any computation, but one might not know whether this is possible with finite evolution. Or it might be that one could only make a construction if one had an infinite tree (say specified by a transfinite number) as the initial condition.
+It’s also conceivable that the behavior of the S combinator could correspond to an “
+intermediate degree
+” of computational capability—and have undecidable features, but not be universal. I don’t think this will happen, but if it does, I would consider it a resolution of the S Combinator Challenge.
+And then, of course, there’s the unexpected. And in my
+experience of exploring the computational universe
+over the past 40 years, that’s something one encounters with remarkable frequency. A corner case one didn’t anticipate. An intermediate situation that didn’t seem possible. A new form of behavior one never imagined. Sometimes these are the most interesting things to find. But inevitably they make giving a cut-and-dried definition of what’s needed for the S Combinator Challenge difficult.
+It’s worth remembering, though, that the S Combinator Challenge is about answering the human-stated question “Is the S combinator computation universal?”. And in the end it may take humans to determine whether some particular potential solution really does answer that question or not.
+In a sense the S Combinator Challenge is already a 100-year story. But I’m certainly hoping that it’ll be resolved in far less than 100 more years. And that in doing so we’ll learn important things about the remarkable world of combinators, and the computational universe in general.
+DOI:
+10.31855/7709b85c-8e6
+Cite this as
+Stephen Wolfram (2021), "1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge," Stephen Wolfram Writings. writings.stephenwolfram.com/2021/06/1920-2020-and-a-20000-prize-announcing-the-s-combinator-challenge.
+Text
+Stephen Wolfram (2021), "1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge," Stephen Wolfram Writings. writings.stephenwolfram.com/2021/06/1920-2020-and-a-20000-prize-announcing-the-s-combinator-challenge.
+CMS
+Wolfram, Stephen. "1920, 2020 and a $20,000 Prize: Announcing the S Combinator Challenge." Stephen Wolfram Writings. June 8, 2021. writings.stephenwolfram.com/2021/06/1920-2020-and-a-20000-prize-announcing-the-s-combinator-challenge.
+APA
+Wolfram, S. (2021, June 8). 1920, 2020 and a $20,000 prize: Announcing the S combinator challenge. Stephen Wolfram Writings. writings.stephenwolfram.com/2021/06/1920-2020-and-a-20000-prize-announcing-the-s-combinator-challenge.
+Posted in:
+Computational Science
+,
+Mathematics
+,
+Ruliology
+cancel [x]
+-->
+Please enter your comment (at least 5 characters).
+Name (required)
+Email (will not be published; required)
+Please enter your name.
+Please enter a valid email address.
+Website
+8  comments
+Theorem. S-reduction is not computationally universal.
+Proof. There is no representation of the function of natural numbers which is constantly zero. Suppose that there was an encoding which made this possible. Choose a number n whose encoding is bigger than the encoding of zero.  Now S-reduction cannot make combinations smaller (this is the job of K) so reduction of the function applied to the encoding of n cannot become the encoding of zero.
+Contradiction.
+QED.
+Barry Jay
+June 8, 2021 at 9:56 pm
+Formally speaking, the S combinator cannot by itself be used to represent all computable functions. Specifically, it’s not possible to construct the K combinator from the S combinator alone. The S combinator can never eliminate any terms, only duplicate them. This is clear from its definition. Every term in the input expression is reproduced in the output at least once. As a result, there is no “S-expression” that can do what K does, as least not in the formal sense.
+On the other hand, I believe that issue was addressed to an extent in the blog post. Though it is not formally possible to replicate the behavior of K with S alone, there may exist some equivalent representation of what K effectively does, but that would require a kind of “sequestration” of the term that K would have eliminated, such that it may clearly be ignored within that representation.
+It’s interesting I was just thinking yesterday about constructing a data representation that eliminates elimination. It would essentially keep track of the history of a computation, as a reversible computation would necessarily do. It certainly would not be a compact representation in general, but it can definitely be made clear what is the desired output versus the leftover bookkeeping. That’s what I would do here as well, since we can’t hope to formally eliminate any terms. Parenthetically, the issue of not being able to represent zero as brought up by Barry Jay assumes that there is exactly one representation of zero. But in a reversible computing scenario where cancellation is impossible, zero may be represented (non-uniquely) as the difference of identical (or at least equivalent) terms. It’s similar to never reducing any fractions, so any x/x would represent unity so long as x doesn’t represent zero.
+The reason I wanted to do this was actually in thinking of the universe as a computer. It seems to me the reversibility of physics would suggest a reversible computation is going on. That means nothing gets thrown out or cancelled, and the representations simply grow unbounded. This isn’t to say that numeric values are never reduced. It’s just that the reductions retain a component that we’d normally deem unnecessary. That’s where time comes into play.
+Think of a reversible 4-D spacetime computation of displacement, for example. You could construct a “basis” from 4 symmetric spacetime unit vectors that each represent a combination of a 3-D spatial translation and a positive temporal displacement (perhaps the Planck time as the unit). The reason for the quotes is that such vectors only form a basis if we restrict our algebra to addition without an additive inverse. In that way, only positively-valued (and empty) combinations are possible. Such additions can still be reduced to a combination of a positive temporal displacement and an effective 3-D spatial displacement in any direction, albeit at a later time so that really only the displacement relative to that of other objects can be observed. From our perspective, we simply measure the 3-D relative displacement and throw out the temporal component in most instances. But from the universe’s perspective, that component is kept and is what prevents us from measuring space without *also* using time to do it! Physically speaking, you cannot cancel the temporal component out, so why use a representation of numbers that allows for it? No computer can do anything that physics itself cannot do, so it’s fair to keep your representations to only what’s physically possible.
+Now back to the problem at hand… We’d need a representation that makes it clear when a term is effectively eliminated from the computation, so that the process may halt early when there is nothing more to gain. Off the top of my head, I’d try something like encapsulating the unwanted term in an infinitely looping expression that keeps returning copies of itself. Such duplication could be detected and halted since it is clear that an expression that duplicates itself can do nothing more than that. If we’re forced to evaluate left to right, then we’d need to keep pushing the “junk” out to the right until all input is consumed. Then the process may terminate when only the self-duplicating terms remain. They may need to absorb more than just junk along the way, but it wouldn’t really matter as long as it’s still a finite amount that it needs to grow by the end of the effective computation from a theoretical standpoint.
+I’m sure there may be other ways of accomplishing this, and I’d like to think in terms of how the universe computes things as a guide. Another example is how energy and momentum are tied together in spacetime. You can’t have a non-zero spatial momentum without a positive temporal energy component. And vice versa, in the reversible representation a non-zero energy without net momentum, such as stationary mass (E=mc^2) would need to be the positive (perhaps even integer) combination of some 4-D momentum-energy basis similar to the displacement basis described earlier. Again, the “cancelled out” spatial momentum components would preserve the history of what went into the computation while allowing for the ability to appear as a net zero value, at least in the 3-D spatial projection. That concealed information instead shows up as a mass with positive energy that cannot be eliminated by any physical process.
+Seth Hoyt
+June 9, 2021 at 2:23 pm
+One thing I’m wondering though, is why focus solely on the S combinator when Chris Barker has constructed the universal iota combinator from which both the S and K combinators can be recovered? If the goal is to reduce the language to one combinator, wouldn’t that suffice for the purpose or is there a specific reason for focusing on S in particular?
+Seth Hoyt
+June 9, 2021 at 8:37 pm
+Dear Mr. Jay, I have two doubts about your interesting Proof.
+The first: it should be possible to have a combinators-like representation of a constantly zero function defined on all natural numbers, see e.g. Barendregt, The Lambda Calculus, Chapter 6 about initial functions and lambda-definable functions definitions.
+The second: S-reduction can generate reductions to combinators “smaller” (= n. of combinators) then initial “length”: s[k][A][B] = B for every B combinator.
+So I think that your proof is based on no-verified statements, sorry.
+Thanks.
+Gianluca Argentini
+Mathematica User, Italy
+Gianluca Argentini
+June 17, 2021 at 10:30 am
+When Wolfram poses an Unsolved Open Problem, I expect the prize to be in the $200,000-$2,000,000 range 🙂
+Michael Gold
+June 21, 2021 at 12:33 pm
+My own first attack: Can we take up other combinators with s combinators? And again : how many kinds are there? Example: to compress/fold with s combinator. So to distinguish from s combinator: like four color theorem: and still walk through (s combinator). Like all four colors being part of s combinator.
+Justin zijlstra
+September 9, 2021 at 9:01 am
+Note – add: if things not s combinator spill through it must be seen as different.
+Justin zijlstra
+September 9, 2021 at 9:09 am
+What can help validate the Principle of Computational Equivalence with a first principles concept for three in general?  Perhaps 6 and 8, or 10, have a chirality effect for S? The S Combinator, like a ‘Tetris’ sort of video game, as mental exercise of sorts, goes both one and two, left or right one, downward three, inward only one, to then compute with 8 and 10.  The S combinator, in this particular “middle school level” equation, may be a universal combinatorial process for a parallel in between START 2; 3, and 4 to FINISH at 8, or 10.
+These intermediate school level axioms for set theory may have required advancing old and new Testament number theory from the first principle of the old test:  Why does the Creator, God, impart two and three, like Genesis begins, “In the {(be)(ginn)&(ing)} …”  and the new test, when Jesus Christ said I am the (Alpha and Omega)? I don’t know, 1984 was so long ago, so altruism has nothing to do with the above equation or any of the Polynomials, for me.
+Gregory R Head
+October 3, 2021 at 10:53 am
+Δ
+Related Writings
+“Endless Forms Most Beautiful and Most Wonderful”: Ruliobiology and the Theoretical Foundations of Biological Form
+October 23, 2026
+What’s the Future for Pure Math Research in the Age of AI?
+September 28, 2026
+Towards a Theory of Bugs: The Ruliology of the Unexpected
+July 21, 2026
+Games between Programs: The Ruliology of Competition
+June 4, 2026
+Recent Writings
+“Endless Forms Most Beautiful and Most Wonderful”: Ruliobiology and the Theoretical Foundations of Biological Form
+October 23, 2026
+What’s the Future for Pure Math Research in the Age of AI?
+September 28, 2026
+In Memory of My Wife, Elise Cawley (1961–2026), with Thanks for 36 Wonderful Years
+August 4, 2026
+Towards a Theory of Bugs: The Ruliology of the Unexpected
+July 21, 2026
+Launching Version 15 of Wolfram Language & Mathematica: Built-in (Useful) AI & Lots of New Core Functionality
+June 16, 2026
+All by date
+Popular Categories
+Artificial Intelligence
+Big Picture
+Companies & Business
+Computational Science
+Computational Thinking
+Data Science
+Education
+Future Perspectives
+Historical Perspectives
+Language & Communication
+Life & Times
+Life Science
+Mathematica
+Mathematics
+New Kind of Science
+New Technology
+Personal Analytics
+Philosophy
+Physics
+Ruliology
+Software Design
+Wolfram|Alpha
+Wolfram Language
+Other
+Writings by Year
+2026
+2025
+2024
+2023
+2022
+2021
+2020
+2019
+2018
+2017
+2016
+2015
+2014
+2013
+2012
+2011
+2010
+2009
+2008
+2007
+2006
+2004
+2003
+All
+© Stephen Wolfram, LLC
+|
+Open content:
+(code:
+)
+|
+Terms
+|
+RSS
+Enable JavaScript to interact with content and submit forms on Wolfram websites.
+Learn how »

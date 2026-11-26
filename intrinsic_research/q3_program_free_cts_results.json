@@ -1,0 +1,300 @@
+{
+  "all_passed": true,
+  "total_native_steps_verified_from_fresh_root": 5174,
+  "utm_states_in_selector": 0,
+  "test_cases": [
+    {
+      "name": "empty_halt",
+      "program": [
+        [
+          1
+        ]
+      ],
+      "input": [],
+      "encoding_native_steps": 106,
+      "simulation_native_steps": 7,
+      "halted": true,
+      "cts_snapshots": [
+        [
+          0,
+          []
+        ]
+      ]
+    },
+    {
+      "name": "single_0_halt",
+      "program": [
+        [
+          1,
+          0
+        ]
+      ],
+      "input": [
+        0
+      ],
+      "encoding_native_steps": 176,
+      "simulation_native_steps": 87,
+      "halted": true,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            0
+          ]
+        ],
+        [
+          0,
+          []
+        ]
+      ]
+    },
+    {
+      "name": "copy_and_drain",
+      "program": [
+        [
+          1
+        ],
+        []
+      ],
+      "input": [
+        1,
+        0,
+        1
+      ],
+      "encoding_native_steps": 250,
+      "simulation_native_steps": 1164,
+      "halted": true,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          []
+        ]
+      ]
+    },
+    {
+      "name": "three_phase_append",
+      "program": [
+        [
+          0,
+          1
+        ],
+        [
+          0
+        ],
+        []
+      ],
+      "input": [
+        1,
+        0
+      ],
+      "encoding_native_steps": 326,
+      "simulation_native_steps": 1288,
+      "halted": true,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          2,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          2,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          []
+        ]
+      ]
+    },
+    {
+      "name": "nonhalting_loop",
+      "program": [
+        [
+          1
+        ]
+      ],
+      "input": [
+        1
+      ],
+      "encoding_native_steps": 144,
+      "simulation_native_steps": 800,
+      "halted": false,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "two_phase_oscillator",
+      "program": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "input": [
+        1
+      ],
+      "encoding_native_steps": 225,
+      "simulation_native_steps": 900,
+      "halted": false,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "multi_bit_burst",
+      "program": [
+        [
+          1,
+          1,
+          0
+        ],
+        [],
+        []
+      ],
+      "input": [
+        1
+      ],
+      "encoding_native_steps": 300,
+      "simulation_native_steps": 928,
+      "halted": true,
+      "cts_snapshots": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          2,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0
+          ]
+        ],
+        [
+          1,
+          []
+        ]
+      ]
+    }
+  ]
+}

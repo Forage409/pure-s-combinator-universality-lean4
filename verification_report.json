@@ -1,0 +1,276 @@
+{
+  "status": "ALL_THEOREMS_AND_CERTIFICATES_VERIFIED",
+  "elapsed_seconds": 13.893,
+  "sn_39_algebra": {
+    "states": 39,
+    "triples_verified": 59319,
+    "size_stats_1_to_10": {
+      "1": {
+        "total": 1,
+        "halting": 1,
+        "non_halting": 0
+      },
+      "2": {
+        "total": 1,
+        "halting": 1,
+        "non_halting": 0
+      },
+      "3": {
+        "total": 2,
+        "halting": 2,
+        "non_halting": 0
+      },
+      "4": {
+        "total": 5,
+        "halting": 5,
+        "non_halting": 0
+      },
+      "5": {
+        "total": 14,
+        "halting": 14,
+        "non_halting": 0
+      },
+      "6": {
+        "total": 42,
+        "halting": 42,
+        "non_halting": 0
+      },
+      "7": {
+        "total": 132,
+        "halting": 130,
+        "non_halting": 2
+      },
+      "8": {
+        "total": 429,
+        "halting": 388,
+        "non_halting": 41
+      },
+      "9": {
+        "total": 1430,
+        "halting": 1154,
+        "non_halting": 276
+      },
+      "10": {
+        "total": 4862,
+        "halting": 3381,
+        "non_halting": 1481
+      }
+    }
+  },
+  "hn_35_algebra_and_open_problem_10": {
+    "triples_total": 42875,
+    "exact_s_algebra_matches": 42875,
+    "max_dag_spine_without_state_13": 7,
+    "unique_self_loop": [
+      13,
+      0
+    ],
+    "unique_entry_to_state_1": [
+      0,
+      0
+    ],
+    "size_stats": {
+      "1": {
+        "total": 1,
+        "has_hnf": 1,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 0
+      },
+      "2": {
+        "total": 1,
+        "has_hnf": 1,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 0
+      },
+      "3": {
+        "total": 2,
+        "has_hnf": 2,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 0
+      },
+      "4": {
+        "total": 5,
+        "has_hnf": 5,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 1
+      },
+      "5": {
+        "total": 14,
+        "has_hnf": 14,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 2
+      },
+      "6": {
+        "total": 42,
+        "has_hnf": 42,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 4
+      },
+      "7": {
+        "total": 132,
+        "has_hnf": 132,
+        "no_hnf": 0,
+        "max_head_steps_among_hn": 9
+      },
+      "8": {
+        "total": 429,
+        "has_hnf": 414,
+        "no_hnf": 15,
+        "max_head_steps_among_hn": 11
+      },
+      "9": {
+        "total": 1430,
+        "has_hnf": 1294,
+        "no_hnf": 136,
+        "max_head_steps_among_hn": 16
+      },
+      "10": {
+        "total": 4862,
+        "has_hnf": 4121,
+        "no_hnf": 741,
+        "max_head_steps_among_hn": 15
+      }
+    },
+    "integer_potential_certificate": {
+      "valid_head_step_triples_verified": 8329,
+      "max_A_entry": 30,
+      "max_B_entry": 68,
+      "min_strict_decrease": 2
+    }
+  },
+  "composite_argument_rnf_ceiling": {
+    "max_composite_args_to_stay_in_hn": 4,
+    "composite_argument_rnf_ceiling": 5
+  },
+  "joint_112_algebra": {
+    "reachable_joint_states": 112,
+    "sn_states": 94,
+    "hn_minus_sn_states": 17,
+    "non_hn_states": [
+      [
+        38,
+        34
+      ]
+    ]
+  },
+  "question_7_flipflop_and_rescue": {
+    "r_ss_total_multiway_states": 6,
+    "chain_verified_through_n": 12,
+    "total_1hole_context_functions_in_A_SN": 940,
+    "unique_1step_rescue_states": [
+      1,
+      8
+    ]
+  },
+  "intrinsic_productivity_q31_and_program_free_cts": {
+    "A_P_states": 39,
+    "A_36_states": 36,
+    "B_quad_hits_under_160": [
+      1,
+      6,
+      15,
+      28,
+      45,
+      66,
+      91,
+      120,
+      153
+    ],
+    "AAA_li_closed_form_verified": true,
+    "program_free_cts_native_steps": 5174
+  },
+  "controller_separation_trivial_rule": {
+    "opening_splits_per_frame": 5,
+    "opened_frame_unambiguous": true
+  },
+  "polynomial_pure_s_compiler_and_halt_dta": {
+    "minimal_halt_dta_states": 11,
+    "bb2_native_s_contractions": 912,
+    "empty_1state_tm_pure_s_leaves": 1996921,
+    "write1_2state_tm_pure_s_leaves": 7477337
+  },
+  "selector_free_lo_counter_and_trie": {
+    "quadratic_milestones_verified": 7,
+    "trie_levels_verified": 5
+  },
+  "top_termination_and_zero_navigator_barriers": {
+    "waldmann_theorem_29_top_termination": {
+      "ge_strata_sizes": [
+        35,
+        34,
+        26,
+        18,
+        17,
+        16,
+        16
+      ],
+      "ge5_states": [
+        5,
+        8,
+        9,
+        10,
+        12,
+        13,
+        17,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        29,
+        30,
+        34
+      ],
+      "max_head_root_steps_to_rnf_sizes_1_to_10": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 2,
+        "6": 3,
+        "7": 4,
+        "8": 6,
+        "9": 8,
+        "10": 8
+      },
+      "all_checks_passed": true
+    },
+    "zero_navigator_multiway_and_q30": {
+      "spurious_shortcut_steps": [
+        7,
+        5
+      ],
+      "pure_line_terms_size_le_13": 254,
+      "berarducci_pairs_verified": 25658,
+      "merge_context_pairs_verified": 3230
+    },
+    "zero_navigator_cellular_and_rule110": {
+      "rule110_min_leaves": 11,
+      "monotone_clones_verified": [
+        "A_HN",
+        "A_SN",
+        "A_P"
+      ],
+      "dnand_states": 4
+    },
+    "zero_navigator_fixed_order": {
+      "hn_spine_horizon": 5,
+      "case3_ceiling": 5,
+      "case3_asymptotic_ceiling": 3,
+      "zachos_6_strategy_automaton_states": 8
+    },
+    "wolfram_package_syntax_balanced": true
+  },
+  "wolfram12_minimality_asymptotics_and_open_question_5": {
+    "wolfram_benchmarks_verified": 14,
+    "catalan_census_max_leaves": 11,
+    "size7_non_sn_witnesses": 2,
+    "size8_non_hn_witnesses": 15,
+    "size9_unique_productive_non_sn": "S(S(SS))(S(SS))(SS)",
+    "size7_unique_strict_diamond_counterexample": "SSS(SSSS)",
+    "asymptotics_dp_max_n": 150,
+    "c_HN_exact_rational": "4429673/7077888",
+    "open_question_5_pval_critical_triples_verified": 76699
+  }
+}

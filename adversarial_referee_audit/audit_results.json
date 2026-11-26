@@ -1,0 +1,27 @@
+{
+  "lean_exit_code": 0,
+  "transitive_lean_files": 153,
+  "total_lean_files": 235,
+  "declarations_audited": 97,
+  "stale_oleans": 0,
+  "missing_oleans": 0,
+  "choice_or_custom_axioms_in_audit": {},
+  "cross_language": {
+    "deltaSN_39x39_exact_match": true,
+    "deltaHN_35x35_exact_match": true,
+    "delta_StateP_39x39_exact_match": true,
+    "delta_State36_36x36_exact_match": true,
+    "haltAutomaton_11x11_exact_match": true,
+    "deltaDNAND_4x4_exact_match": true,
+    "deltaBZachos_8x8_exact_match": true,
+    "rule110Term_exact_match": true,
+    "fixedUProgram_32_transitions_exact_match": true,
+    "fixedBinaryTable_262_transitions_exact_match": true,
+    "finite_tree_walker_exact_control_cardinality": 4376490905
+  },
+  "pf_cts_same_layout": true,
+  "broken_d_ag_count": 0,
+  "draft_banner_count": 0,
+  "root_debug_scratch_count": 0,
+  "overall_verdict": "ALL_ADVERSARIAL_REFEREE_AUDIT_ASSERTIONS_PASSED"
+}

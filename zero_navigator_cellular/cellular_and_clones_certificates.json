@@ -1,0 +1,262 @@
+{
+  "monotone_algebras": {
+    "A_HN": {
+      "n_states": 35,
+      "s_law_triples_verified": 42875,
+      "pol1_exact_size": 864,
+      "pol1_non_aperiodic_count": 0,
+      "compatible_preorder_cover_size": 6,
+      "ordered_pairs_separated": 1190
+    },
+    "A_SN": {
+      "n_states": 39,
+      "s_law_triples_verified": 59319,
+      "pol1_exact_size": 4412,
+      "pol1_non_aperiodic_count": 0,
+      "compatible_preorder_cover_size": 5,
+      "ordered_pairs_separated": 1482
+    },
+    "A_P": {
+      "n_states": 39,
+      "s_law_triples_verified": 59319,
+      "pol1_exact_size": 4440,
+      "pol1_non_aperiodic_count": 0,
+      "compatible_preorder_cover_size": 5,
+      "ordered_pairs_separated": 1482
+    }
+  },
+  "post_lattice_classifications": {
+    "A_HN_post_clone_distribution": {
+      "U_01_projections_and_constants": 1190
+    },
+    "A_SN_post_clone_distribution": {
+      "U_01_projections_and_constants": 1474,
+      "S_OR_01_pairs": [
+        [
+          6,
+          38
+        ],
+        [
+          25,
+          38
+        ],
+        [
+          29,
+          38
+        ],
+        [
+          30,
+          38
+        ]
+      ],
+      "S_AND_01_pairs": [
+        [
+          38,
+          6
+        ],
+        [
+          38,
+          25
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          38,
+          30
+        ]
+      ]
+    },
+    "A_P_post_clone_distribution": {
+      "U_01_projections_and_constants": 1474,
+      "S_OR_01_pairs": [
+        [
+          18,
+          37
+        ],
+        [
+          24,
+          37
+        ],
+        [
+          29,
+          37
+        ],
+        [
+          33,
+          37
+        ]
+      ],
+      "S_AND_01_pairs": [
+        [
+          37,
+          18
+        ],
+        [
+          37,
+          24
+        ],
+        [
+          37,
+          29
+        ],
+        [
+          37,
+          33
+        ]
+      ]
+    }
+  },
+  "small_1generated_s_algebras_n2_to_n5": {
+    "2": {
+      "iso_classes": 1,
+      "curried_not_algebras": 0,
+      "curried_nand_algebras": 0,
+      "curried_xor_algebras": 0,
+      "curried_rule110_algebras": 0,
+      "nonprojection_curried_binary_truth_tables": []
+    },
+    "3": {
+      "iso_classes": 6,
+      "curried_not_algebras": 2,
+      "curried_nand_algebras": 0,
+      "curried_xor_algebras": 0,
+      "curried_rule110_algebras": 0,
+      "nonprojection_curried_binary_truth_tables": []
+    },
+    "4": {
+      "iso_classes": 104,
+      "curried_not_algebras": 36,
+      "curried_nand_algebras": 0,
+      "curried_xor_algebras": 0,
+      "curried_rule110_algebras": 0,
+      "nonprojection_curried_binary_truth_tables": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ]
+      ]
+    },
+    "5": {
+      "iso_classes": 6443,
+      "curried_not_algebras": 2452,
+      "curried_nand_algebras": 0,
+      "curried_xor_algebras": 0,
+      "curried_rule110_algebras": 0,
+      "nonprojection_curried_binary_truth_tables": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "dnand_and_rule110": {
+    "rule110_provable_minimum_leaves": 11,
+    "rule110_minimal_expression": "S(S(yx)(S(yz)(S(zy)S)))",
+    "reachable_8tuples_through_size_11": 413,
+    "rule110_periodic_7cell_trace": [
+      {
+        "generation": 0,
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "max_cell_leaves": 4,
+        "all_normal_form_spine1": true
+      },
+      {
+        "generation": 1,
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "max_cell_leaves": 23,
+        "all_normal_form_spine1": true
+      },
+      {
+        "generation": 2,
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "max_cell_leaves": 133,
+        "all_normal_form_spine1": true
+      },
+      {
+        "generation": 3,
+        "bits": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "max_cell_leaves": 779,
+        "all_normal_form_spine1": true
+      },
+      {
+        "generation": 4,
+        "bits": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "max_cell_leaves": 4607,
+        "all_normal_form_spine1": true
+      }
+    ],
+    "dnand_curried_collapse_verified": true
+  },
+  "elapsed_seconds": 324.9
+}

@@ -1,0 +1,19 @@
+import zero_navigator_multiway.multiway_and_q30_theorems
+
+/-!
+# Alias Entrypoint for Zero-Navigator Multiway & Question 30 Theorems
+Re-exports `zero_navigator_multiway.multiway_and_q30_theorems` and checks all axioms.
+-/
+
+#print axioms ZeroNavigatorMultiway.scott_q30_gk_cofinality
+#print axioms ZeroNavigatorMultiway.decideReduces
+#print axioms ZeroNavigatorMultiway.decideConvClosedSN
+#print axioms ZeroNavigatorMultiway.rnf_convS_app_iff
+#print axioms ZeroNavigatorMultiway.multiway_no_exclusive_second_thunk
+#print axioms ZeroNavigatorMultiway.no_church_boolean_pair_in_pure_s
+#print axioms ZeroNavigatorMultiway.pure_line_four_cases
+#print axioms ZeroNavigatorMultiway.protected_trie_nonhalting_shortcut_7steps
+#print axioms ZeroNavigatorMultiway.filin_dispatcher_nonhalting_shortcut_5steps
+#print axioms ZeroNavigatorMultiway.waldmann_polymorphic_merge
+#print axioms ZeroNavigatorMultiway.ssss_n1_s_convS_ssss_n2_s
+#print axioms ZeroNavigatorMultiway.tower_nf_merge_family

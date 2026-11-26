@@ -1,0 +1,1329 @@
+{
+  "elapsed_sec": 0.049,
+  "algebra_summary": {
+    "reachable_hn_p_pairs": 113,
+    "reachable_sn_hn_p_triples": 146,
+    "reachable_sn_hn_p_q36_quads": 147,
+    "sn_implies_prod": true,
+    "prod_implies_hn": true,
+    "hn34_q36_states": [
+      34,
+      35
+    ],
+    "class_counts_in_triple_algebra": {
+      "Tier1_SN": 98,
+      "Tier2_Prod_NonSN": 30,
+      "Tier3_HN_NonProd": 17,
+      "Tier4_NonHN": 1
+    }
+  },
+  "hn_p_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      5,
+      18
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      8,
+      15
+    ],
+    [
+      8,
+      18
+    ],
+    [
+      8,
+      27
+    ],
+    [
+      8,
+      37
+    ],
+    [
+      9,
+      18
+    ],
+    [
+      9,
+      33
+    ],
+    [
+      9,
+      37
+    ],
+    [
+      10,
+      18
+    ],
+    [
+      10,
+      24
+    ],
+    [
+      10,
+      27
+    ],
+    [
+      10,
+      29
+    ],
+    [
+      10,
+      33
+    ],
+    [
+      10,
+      37
+    ],
+    [
+      11,
+      6
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      12,
+      9
+    ],
+    [
+      12,
+      10
+    ],
+    [
+      12,
+      11
+    ],
+    [
+      12,
+      18
+    ],
+    [
+      12,
+      19
+    ],
+    [
+      12,
+      20
+    ],
+    [
+      12,
+      37
+    ],
+    [
+      13,
+      7
+    ],
+    [
+      13,
+      9
+    ],
+    [
+      13,
+      12
+    ],
+    [
+      13,
+      13
+    ],
+    [
+      13,
+      15
+    ],
+    [
+      13,
+      16
+    ],
+    [
+      13,
+      17
+    ],
+    [
+      13,
+      18
+    ],
+    [
+      13,
+      20
+    ],
+    [
+      13,
+      21
+    ],
+    [
+      13,
+      22
+    ],
+    [
+      13,
+      23
+    ],
+    [
+      13,
+      24
+    ],
+    [
+      13,
+      25
+    ],
+    [
+      13,
+      26
+    ],
+    [
+      13,
+      27
+    ],
+    [
+      13,
+      28
+    ],
+    [
+      13,
+      29
+    ],
+    [
+      13,
+      30
+    ],
+    [
+      13,
+      31
+    ],
+    [
+      13,
+      32
+    ],
+    [
+      13,
+      33
+    ],
+    [
+      13,
+      34
+    ],
+    [
+      13,
+      35
+    ],
+    [
+      13,
+      36
+    ],
+    [
+      13,
+      37
+    ],
+    [
+      13,
+      38
+    ],
+    [
+      14,
+      7
+    ],
+    [
+      15,
+      11
+    ],
+    [
+      16,
+      14
+    ],
+    [
+      17,
+      23
+    ],
+    [
+      17,
+      24
+    ],
+    [
+      17,
+      27
+    ],
+    [
+      17,
+      29
+    ],
+    [
+      17,
+      33
+    ],
+    [
+      17,
+      37
+    ],
+    [
+      18,
+      16
+    ],
+    [
+      19,
+      18
+    ],
+    [
+      20,
+      24
+    ],
+    [
+      20,
+      25
+    ],
+    [
+      20,
+      27
+    ],
+    [
+      20,
+      29
+    ],
+    [
+      20,
+      37
+    ],
+    [
+      21,
+      18
+    ],
+    [
+      21,
+      37
+    ],
+    [
+      22,
+      24
+    ],
+    [
+      22,
+      29
+    ],
+    [
+      22,
+      37
+    ],
+    [
+      23,
+      29
+    ],
+    [
+      23,
+      37
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      24,
+      29
+    ],
+    [
+      24,
+      37
+    ],
+    [
+      25,
+      24
+    ],
+    [
+      25,
+      29
+    ],
+    [
+      25,
+      37
+    ],
+    [
+      26,
+      17
+    ],
+    [
+      27,
+      18
+    ],
+    [
+      27,
+      20
+    ],
+    [
+      27,
+      37
+    ],
+    [
+      28,
+      26
+    ],
+    [
+      29,
+      24
+    ],
+    [
+      29,
+      27
+    ],
+    [
+      29,
+      29
+    ],
+    [
+      29,
+      35
+    ],
+    [
+      29,
+      36
+    ],
+    [
+      29,
+      37
+    ],
+    [
+      30,
+      24
+    ],
+    [
+      30,
+      29
+    ],
+    [
+      30,
+      34
+    ],
+    [
+      30,
+      37
+    ],
+    [
+      31,
+      24
+    ],
+    [
+      31,
+      27
+    ],
+    [
+      31,
+      28
+    ],
+    [
+      31,
+      29
+    ],
+    [
+      31,
+      35
+    ],
+    [
+      31,
+      37
+    ],
+    [
+      32,
+      29
+    ],
+    [
+      33,
+      29
+    ],
+    [
+      33,
+      37
+    ],
+    [
+      34,
+      37
+    ]
+  ],
+  "census": [
+    {
+      "leaves": 1,
+      "total_catalan": 1,
+      "Tier1_SN": 1,
+      "non_SN": 0,
+      "Productive": 1,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 1,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 2,
+      "total_catalan": 1,
+      "Tier1_SN": 1,
+      "non_SN": 0,
+      "Productive": 1,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 1,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 3,
+      "total_catalan": 2,
+      "Tier1_SN": 2,
+      "non_SN": 0,
+      "Productive": 2,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 2,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 4,
+      "total_catalan": 5,
+      "Tier1_SN": 5,
+      "non_SN": 0,
+      "Productive": 5,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 5,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 5,
+      "total_catalan": 14,
+      "Tier1_SN": 14,
+      "non_SN": 0,
+      "Productive": 14,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 14,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 6,
+      "total_catalan": 42,
+      "Tier1_SN": 42,
+      "non_SN": 0,
+      "Productive": 42,
+      "non_Productive": 0,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 0,
+      "HN": 42,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 7,
+      "total_catalan": 132,
+      "Tier1_SN": 130,
+      "non_SN": 2,
+      "Productive": 130,
+      "non_Productive": 2,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 2,
+      "HN": 132,
+      "Tier4_non_HN": 0,
+      "non_HN_q34": 0,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 8,
+      "total_catalan": 429,
+      "Tier1_SN": 388,
+      "non_SN": 41,
+      "Productive": 388,
+      "non_Productive": 41,
+      "Tier2_Productive_non_SN": 0,
+      "Tier3_HN_non_Productive": 26,
+      "HN": 414,
+      "Tier4_non_HN": 15,
+      "non_HN_q34": 15,
+      "non_HN_q35": 0,
+      "RNF_without_HNF": 0
+    },
+    {
+      "leaves": 9,
+      "total_catalan": 1430,
+      "Tier1_SN": 1154,
+      "non_SN": 276,
+      "Productive": 1155,
+      "non_Productive": 275,
+      "Tier2_Productive_non_SN": 1,
+      "Tier3_HN_non_Productive": 139,
+      "HN": 1294,
+      "Tier4_non_HN": 136,
+      "non_HN_q34": 121,
+      "non_HN_q35": 15,
+      "RNF_without_HNF": 15
+    },
+    {
+      "leaves": 10,
+      "total_catalan": 4862,
+      "Tier1_SN": 3381,
+      "non_SN": 1481,
+      "Productive": 3383,
+      "non_Productive": 1479,
+      "Tier2_Productive_non_SN": 2,
+      "Tier3_HN_non_Productive": 738,
+      "HN": 4121,
+      "Tier4_non_HN": 741,
+      "non_HN_q34": 605,
+      "non_HN_q35": 136,
+      "RNF_without_HNF": 151
+    },
+    {
+      "leaves": 11,
+      "total_catalan": 16796,
+      "Tier1_SN": 9967,
+      "non_SN": 6829,
+      "Productive": 9972,
+      "non_Productive": 6824,
+      "Tier2_Productive_non_SN": 5,
+      "Tier3_HN_non_Productive": 3624,
+      "HN": 13596,
+      "Tier4_non_HN": 3200,
+      "non_HN_q34": 2459,
+      "non_HN_q35": 741,
+      "RNF_without_HNF": null
+    }
+  ],
+  "size7_non_sn": [
+    {
+      "term": "SSS(SS)SS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 23,
+      "p": 37,
+      "q36": 23
+    },
+    {
+      "term": "S(SS)SSSS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 23,
+      "p": 37,
+      "q36": 23
+    }
+  ],
+  "size8_non_hn": [
+    {
+      "term": "S(SSS)S(SSS)",
+      "lean": "S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S)",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "SSS(S(SSS))S",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(SS)S(SSS)S",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(S(SSS))(SS)S",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 (S \u22c5 S) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "SSS(SS)(SS)S",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(SSS)S(SS)S",
+      "lean": "S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(SS)SS(SS)S",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "SSS(S(SS))SS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(S(SS))(SS)SS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(SS)S(SS)SS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(S(SSS))SSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(S(SS)S)SSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S) \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "SSS(SS)SSS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(S(SS))SSSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 S \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    },
+    {
+      "term": "S(SS)SSSSS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S \u22c5 S \u22c5 S",
+      "sn": 38,
+      "hn": 34,
+      "p": 37,
+      "q36": 34
+    }
+  ],
+  "size9_non_hn_q35": [
+    {
+      "term": "S(SSS)S(SSS)S",
+      "lean": "S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S"
+    },
+    {
+      "term": "SSS(S(SSS))SS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(SS)S(SSS)SS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(S(SSS))(SS)SS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "SSS(SS)(SS)SS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(SSS)S(SS)SS",
+      "lean": "S \u22c5 (S \u22c5 S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(SS)SS(SS)SS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "SSS(S(SS))SSS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(S(SS))(SS)SSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(SS)S(SS)SSS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(S(SSS))SSSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S)) \u22c5 S \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(S(SS)S)SSSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S) \u22c5 S \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "SSS(SS)SSSS",
+      "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(S(SS))SSSSS",
+      "lean": "S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 S \u22c5 S \u22c5 S \u22c5 S \u22c5 S"
+    },
+    {
+      "term": "S(SS)SSSSSS",
+      "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S \u22c5 S \u22c5 S \u22c5 S"
+    }
+  ],
+  "rnf_non_hn_by_size": {
+    "9": [
+      "S(SSS)S(SSS)S",
+      "SSS(S(SSS))SS",
+      "S(SS)S(SSS)SS",
+      "S(S(SSS))(SS)SS",
+      "SSS(SS)(SS)SS",
+      "S(SSS)S(SS)SS",
+      "S(SS)SS(SS)SS",
+      "SSS(S(SS))SSS",
+      "S(S(SS))(SS)SSS",
+      "S(SS)S(SS)SSS",
+      "S(S(SSS))SSSS",
+      "S(S(SS)S)SSSS",
+      "SSS(SS)SSSS",
+      "S(S(SS))SSSSS",
+      "S(SS)SSSSSS"
+    ],
+    "10": [
+      "S(SSS)S(SSS)(SS)",
+      "SSS(S(SSS))S(SS)",
+      "S(SS)S(SSS)S(SS)",
+      "S(S(SSS))(SS)S(SS)",
+      "SSS(SS)(SS)S(SS)",
+      "S(SSS)S(SS)S(SS)",
+      "S(SS)SS(SS)S(SS)",
+      "SSS(S(SS))SS(SS)",
+      "S(S(SS))(SS)SS(SS)",
+      "S(SS)S(SS)SS(SS)",
+      "S(S(SSS))SSS(SS)",
+      "S(S(SS)S)SSS(SS)",
+      "SSS(SS)SSS(SS)",
+      "S(S(SS))SSSS(SS)",
+      "S(SS)SSSSS(SS)",
+      "S(SSS)S(S(SSS))S",
+      "S(SSS)S(SS(SS))S",
+      "S(SSS)S(S(SS)S)S",
+      "S(SSS)S(SSSS)S",
+      "SSS(SSS)(SSS)S",
+      "S(SSS)(SS)(SSS)S",
+      "S(S(SSS))S(SSS)S",
+      "S(SS(SS))S(SSS)S",
+      "S(S(SS)S)S(SSS)S",
+      "S(SSSS)S(SSS)S",
+      "S(SS)(SS)S(SSS)S",
+      "SSS(SS)S(SSS)S",
+      "S(SS)SSS(SSS)S",
+      "SSS(S(SSS))(SS)S",
+      "S(SS)S(SSS)(SS)S",
+      "S(S(SSS))(SS)(SS)S",
+      "SSS(SS)(SS)(SS)S",
+      "S(SSS)S(SS)(SS)S",
+      "S(SS)SS(SS)(SS)S",
+      "S(S(S(SSS)))S(SS)S",
+      "S(SSS(SS))S(SS)S",
+      "S(S(SSS)S)S(SS)S",
+      "S(S(SS)SS)S(SS)S",
+      "SSS(S(SS))S(SS)S",
+      "SSS(SSS)S(SS)S",
+      "S(S(SS))(SS)S(SS)S",
+      "S(SS)S(SS)S(SS)S",
+      "S(S(SSS))SS(SS)S",
+      "S(S(SS)S)SS(SS)S",
+      "S(SS)(SS)SS(SS)S",
+      "SSS(SS)SS(SS)S",
+      "S(S(SS))SSS(SS)S",
+      "S(SS)SSSS(SS)S",
+      "SSS(S(S(SSS)))SS",
+      "SSS(S(SS(SS)))SS",
+      "SSS(S(S(SS)S))SS",
+      "SSS(S(SSSS))SS",
+      "SSS(S(SS)(SS))SS",
+      "SSS(SSS(SS))SS",
+      "SSS(S(SS)SS)SS",
+      "SS(SS)(S(SSS))SS",
+      "S(SS)S(S(SSS))SS",
+      "S(SS)S(SS(SS))SS",
+      "S(SS)S(S(SS)S)SS",
+      "S(SS)S(SSSS)SS",
+      "SSSS(S(SSS))SS",
+      "S(S(SSS))(S(SS))SS",
+      "S(S(SSS))(SSS)SS",
+      "SSS(SS)(S(SS))SS",
+      "SSS(SS)(SSS)SS",
+      "S(S(SS))S(S(SS))SS",
+      "S(S(SS))S(SSS)SS",
+      "S(SSS)S(S(SS))SS",
+      "S(SSS)S(SSS)SS",
+      "S(SS)SS(S(SS))SS",
+      "S(SS)SS(SSS)SS",
+      "S(S(S(SSS)))(SS)SS",
+      "S(S(SS(SS)))(SS)SS",
+      "S(S(S(SS)S))(SS)SS",
+      "S(S(SSSS))(SS)SS",
+      "S(S(SS)(SS))(SS)SS",
+      "S(SSS(SS))(SS)SS",
+      "S(S(SS)SS)(SS)SS",
+      "S(SS)(S(SS))(SS)SS",
+      "S(SS)(SSS)(SS)SS",
+      "SSS(SSS)(SS)SS",
+      "S(SSS)(SS)(SS)SS",
+      "SS(SS)(SS)(SS)SS",
+      "SSSS(SS)(SS)SS",
+      "S(S(S(SS)))S(SS)SS",
+      "S(S(SSS))S(SS)SS",
+      "S(SS(SS))S(SS)SS",
+      "S(S(SS)S)S(SS)SS",
+      "S(SSSS)S(SS)SS",
+      "S(SS)(SS)S(SS)SS",
+      "SSS(SS)S(SS)SS",
+      "S(SSS)SS(SS)SS",
+      "S(SS)SSS(SS)SS",
+      "S(S(S(S(SSS))))SSS",
+      "S(S(SSS(SS)))SSS",
+      "S(S(S(SSS)S))SSS",
+      "S(S(S(SS)SS))SSS",
+      "S(SSS(S(SS)))SSS",
+      "S(SSS(SSS))SSS",
+      "S(S(S(SS))(SS))SSS",
+      "S(S(SS)S(SS))SSS",
+      "S(S(S(SSS))S)SSS",
+      "S(S(S(SS)S)S)SSS",
+      "S(S(SS)(SS)S)SSS",
+      "S(SSS(SS)S)SSS",
+      "S(S(S(SS))SS)SSS",
+      "S(S(SS)SSS)SSS",
+      "S(SS)(S(SS)S)SSS",
+      "SSS(S(S(SS)))SSS",
+      "SSS(S(SSS))SSS",
+      "SSS(S(SS)S)SSS",
+      "S(S(SS))(S(SS))SSS",
+      "S(S(SS))(SSS)SSS",
+      "SS(SS)(S(SS))SSS",
+      "S(SS)S(S(SS))SSS",
+      "S(SS)S(SSS)SSS",
+      "SSSS(S(SS))SSS",
+      "S(S(S(SS)))(SS)SSS",
+      "S(S(SSS))(SS)SSS",
+      "S(S(SS)S)(SS)SSS",
+      "SS(S(SS))(SS)SSS",
+      "SS(SSS)(SS)SSS",
+      "SSS(SS)(SS)SSS",
+      "S(S(SS))S(SS)SSS",
+      "S(SSS)S(SS)SSS",
+      "SS(SS)S(SS)SSS",
+      "S(SS)SS(SS)SSS",
+      "SSSSS(SS)SSS",
+      "S(S(S(S(SS))))SSSS",
+      "S(S(S(SSS)))SSSS",
+      "S(S(SS(SS)))SSSS",
+      "S(S(S(SS)S))SSSS",
+      "S(S(SSSS))SSSS",
+      "S(S(SS)(SS))SSSS",
+      "S(SSS(SS))SSSS",
+      "S(S(SSS)S)SSSS",
+      "S(S(SS)SS)SSSS",
+      "S(SS)(S(SS))SSSS",
+      "SSS(S(SS))SSSS",
+      "SSS(SSS)SSSS",
+      "S(S(SS))(SS)SSSS",
+      "S(SS)S(SS)SSSS",
+      "S(S(S(SS)))SSSSS",
+      "S(S(SSS))SSSSS",
+      "S(SS(SS))SSSSS",
+      "S(S(SS)S)SSSSS",
+      "S(SSSS)SSSSS",
+      "S(SS)(SS)SSSSS",
+      "SSS(SS)SSSSS",
+      "S(S(SS))SSSSSS",
+      "S(SS)SSSSSSS"
+    ]
+  },
+  "productive_non_sn_by_size": {
+    "9": [
+      {
+        "term": "S(S(SS))(S(SS))(SS)",
+        "lean": "S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S)",
+        "sn": 38,
+        "hn": 24,
+        "p": 29,
+        "q36": 24
+      }
+    ],
+    "10": [
+      {
+        "term": "S(S(S(SS))(S(SS))(SS))",
+        "lean": "S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S))",
+        "sn": 38,
+        "hn": 10,
+        "p": 18,
+        "q36": 10
+      },
+      {
+        "term": "S(SS)(SS)(S(SS)(SS))",
+        "lean": "S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S))",
+        "sn": 38,
+        "hn": 24,
+        "p": 29,
+        "q36": 24
+      }
+    ],
+    "11": [
+      {
+        "term": "S(S(S(S(SS))(S(SS))(SS)))",
+        "lean": "S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S)))",
+        "sn": 38,
+        "hn": 10,
+        "p": 18,
+        "q36": 10
+      },
+      {
+        "term": "S(S(SS)(SS)(S(SS)(SS)))",
+        "lean": "S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S)))",
+        "sn": 38,
+        "hn": 10,
+        "p": 18,
+        "q36": 10
+      },
+      {
+        "term": "SS(S(S(SS))(S(SS))(SS))",
+        "lean": "S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S))",
+        "sn": 38,
+        "hn": 13,
+        "p": 29,
+        "q36": 13
+      },
+      {
+        "term": "SS(S(S(SS))(S(SS)))(SS)",
+        "lean": "S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S))) \u22c5 (S \u22c5 S)",
+        "sn": 38,
+        "hn": 10,
+        "p": 29,
+        "q36": 10
+      },
+      {
+        "term": "S(S(S(SS))(S(SS))(SS))S",
+        "lean": "S \u22c5 (S \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 (S \u22c5 S)) \u22c5 (S \u22c5 S)) \u22c5 S",
+        "sn": 38,
+        "hn": 23,
+        "p": 29,
+        "q36": 23
+      }
+    ]
+  },
+  "multiway_branch_by_size": {
+    "1": {
+      "normal_forms": 1,
+      "unique_1step_reduct": 0,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "2": {
+      "normal_forms": 1,
+      "unique_1step_reduct": 0,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "3": {
+      "normal_forms": 2,
+      "unique_1step_reduct": 0,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "4": {
+      "normal_forms": 4,
+      "unique_1step_reduct": 1,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "5": {
+      "normal_forms": 9,
+      "unique_1step_reduct": 5,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "6": {
+      "normal_forms": 21,
+      "unique_1step_reduct": 21,
+      "multiway_branching_ge2": 0,
+      "strict_1step_diamond_failures": 0,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [],
+      "diamond1_fail_terms": []
+    },
+    "7": {
+      "normal_forms": 51,
+      "unique_1step_reduct": 78,
+      "multiway_branching_ge2": 3,
+      "strict_1step_diamond_failures": 1,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [
+        {
+          "term": "SSS(SSSS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SS(SSSS)S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "S(SSSS)SS",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S"
+        }
+      ],
+      "diamond1_fail_terms": [
+        {
+          "term": "SSS(SSSS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        }
+      ]
+    },
+    "8": {
+      "normal_forms": 127,
+      "unique_1step_reduct": 274,
+      "multiway_branching_ge2": 28,
+      "strict_1step_diamond_failures": 9,
+      "coincident_distinct_redexes_same_target": 0,
+      "branch_terms": [
+        {
+          "term": "S(SSS(SSSS))",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S))"
+        },
+        {
+          "term": "S(SS(SSSS)S)",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S)"
+        },
+        {
+          "term": "S(S(SSSS)SS)",
+          "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SSS(S(SSSS))",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S))"
+        },
+        {
+          "term": "SSS(SSS(SS))",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S))"
+        },
+        {
+          "term": "SSS(SS(SS)S)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S)"
+        },
+        {
+          "term": "SSS(S(SS)SS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SSS(SSSSS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SS(SS)(SSSS)",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "S(SS)S(SSSS)",
+          "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SSSS(SSSS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SS(SSSS)(SS)",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 (S \u22c5 S)"
+        },
+        {
+          "term": "S(SSSS)S(SS)",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S)"
+        },
+        {
+          "term": "SS(S(SSSS))S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)) \u22c5 S"
+        },
+        {
+          "term": "SS(SSS(SS))S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S)) \u22c5 S"
+        },
+        {
+          "term": "SS(SS(SS)S)S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "SS(S(SS)SS)S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "SS(SSSSS)S",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "S(SS)(SSSS)S",
+          "lean": "S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "SSS(SSSS)S",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "S(SSSS)(SS)S",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 (S \u22c5 S) \u22c5 S"
+        },
+        {
+          "term": "S(S(SSSS))SS",
+          "lean": "S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "S(SSS(SS))SS",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S)) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "S(SS(SS)S)SS",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "S(S(SS)SS)SS",
+          "lean": "S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "S(SSSSS)SS",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "SS(SSSS)SS",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S"
+        },
+        {
+          "term": "S(SSSS)SSS",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S \u22c5 S \u22c5 S"
+        }
+      ],
+      "diamond1_fail_terms": [
+        {
+          "term": "S(SSS(SSSS))",
+          "lean": "S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S))"
+        },
+        {
+          "term": "SSS(S(SSSS))",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S))"
+        },
+        {
+          "term": "SSS(SSS(SS))",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S))"
+        },
+        {
+          "term": "SSS(SS(SS)S)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 S)"
+        },
+        {
+          "term": "SSS(S(SS)SS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SSS(SSSSS)",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SS(SS)(SSSS)",
+          "lean": "S \u22c5 S \u22c5 (S \u22c5 S) \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "S(SS)S(SSSS)",
+          "lean": "S \u22c5 (S \u22c5 S) \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S)"
+        },
+        {
+          "term": "SSS(SSSS)S",
+          "lean": "S \u22c5 S \u22c5 S \u22c5 (S \u22c5 S \u22c5 S \u22c5 S) \u22c5 S"
+        }
+      ]
+    }
+  }
+}
