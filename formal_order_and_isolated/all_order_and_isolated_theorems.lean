@@ -1,0 +1,56 @@
+import formal_order_and_isolated.order_classification
+import formal_order_and_isolated.leaf_preserving_and_isolated
+import formal_order_and_isolated.higher_order_catalan_laws
+
+/-!
+# Unified Verification Entrypoint: Order `{0, 1, 2, 3}`, Leaf-Preserving Dynamics, Isolated Normal Forms, and Higher-Order Catalan Laws
+
+Imports all three modules in `formal_order_and_isolated/` and verifies every landmark theorem
+under `#print axioms` (`[propext]` at most — ZERO `Classical.choice`, ZERO `sorry`, ZERO `native_decide`,
+ZERO custom axioms).
+-/
+
+-- Module 1: `formal_order_and_isolated/order_classification.lean`
+#print axioms FormalOrderAndIsolated.open_hasSHeadHNF_iff
+#print axioms FormalOrderAndIsolated.isDummyTail_iff_evalHNOpen_eq_hn34
+#print axioms FormalOrderAndIsolated.hasExactOrder_iff_orderOfStateHN
+#print axioms FormalOrderAndIsolated.visser_van_oostrom_exact_order_exhaustion
+#print axioms FormalOrderAndIsolated.closed_order_operational_characterization
+#print axioms FormalOrderAndIsolated.closed_order3_iff_rightComb
+#print axioms FormalOrderAndIsolated.minimal_order_thresholds_1_to_5
+#print axioms FormalOrderAndIsolated.stateOrd2_decides_order2_and_ge2
+#print axioms FormalOrderAndIsolated.stateOrd3_decides_order3
+#print axioms FormalOrderAndIsolated.minimal_automaton_lower_bound_35
+#print axioms FormalOrderAndIsolated.minimal_automaton_lower_bound_12
+#print axioms FormalOrderAndIsolated.minimal_automaton_lower_bound_3
+
+-- Module 2: `formal_order_and_isolated/leaf_preserving_and_isolated.lean`
+#print axioms FormalOrderAndIsolated.step_leaves_eq_iff
+#print axioms FormalOrderAndIsolated.closed_step_leaves_eq_iff
+#print axioms FormalOrderAndIsolated.bergstraWeight_leafPres_exact_drop
+#print axioms FormalOrderAndIsolated.bergstraWeight_bounds
+#print axioms FormalOrderAndIsolated.closed_bergstraWeight_extremals
+#print axioms FormalOrderAndIsolated.bergstra_leafPres_exp_bound
+#print axioms FormalOrderAndIsolated.leftSubtreeSum_leafPresStep
+#print axioms FormalOrderAndIsolated.leafPres_sn
+#print axioms FormalOrderAndIsolated.leafPresStepsN_quadratic_upper_bound
+#print axioms FormalOrderAndIsolated.leafPres_church_rosser
+#print axioms FormalOrderAndIsolated.leafPres_jordan_holder
+#print axioms FormalOrderAndIsolated.leftComb_leafPres_quarter_square
+#print axioms FormalOrderAndIsolated.convS_singleton_iff_isolatedNF
+#print axioms FormalOrderAndIsolated.hasNoPredecessor_iff
+#print axioms FormalOrderAndIsolated.isIsolatedClosedNF_iff
+#print axioms FormalOrderAndIsolated.rightComb_isIsolatedNF
+#print axioms FormalOrderAndIsolated.minimal_non_isolated_nf_threshold
+
+-- Module 3: `formal_order_and_isolated/higher_order_catalan_laws.lean`
+#print axioms FormalOrderAndIsolated.countOrder_eq_filter_length
+#print axioms FormalOrderAndIsolated.order_counts_partition_catalan
+#print axioms FormalOrderAndIsolated.countOrder3_eq_one
+#print axioms FormalOrderAndIsolated.countOrder2_universal_lower
+#print axioms FormalOrderAndIsolated.countOrder1_universal_lower
+#print axioms FormalOrderAndIsolated.countOrder0_universal_lower
+#print axioms FormalOrderAndIsolated.exact_rational_order_catalan_densities_certified
+#print axioms FormalOrderAndIsolated.countCNF_eq_filter_length
+#print axioms FormalOrderAndIsolated.isolated_le_cnf_le_sn_and_exp_decay
+#print axioms FormalOrderAndIsolated.exact_order_and_isolated_census_1_to_8
