@@ -26,7 +26,7 @@ jobs:
       - name: Run Wolfram Language package cross-validator
         run: python3 wolfram_submission/cross_validate_wl.py
 
-      - name: Run 18-stage standalone Python verification suite
+      - name: Run 19-stage standalone Python verification suite
         run: python3 verify_all_theorems.py
 
       - name: Build all Lean 4.33.1 modules & run 60-second Trust-Zero Spec Check

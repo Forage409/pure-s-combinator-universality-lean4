@@ -13,7 +13,7 @@ AssertTrue[cond_, msg_] := If[!TrueQ[cond],
   Exit[1]
 ];
 
-Print["[1/12] Verifying native S contraction & selector-free quadratic counter..."];
+Print["[1/16] Verifying native S contraction & selector-free quadratic counter..."];
 Module[{sb = s[s[s]], seed10, cur, ch, d00, step},
   seed10 = (((s[sb])[sb])[s[s]])[s];
   AssertTrue[PureSLeafCount[seed10] === 10, "10-leaf seed leaf count"];
@@ -25,7 +25,7 @@ Module[{sb = s[s[s]], seed10, cur, ch, d00, step},
   Print["  10-leaf seed normal-order progression OK."];
 ];
 
-Print["[2/12] Verifying 39-state A_SN and 35-state A_HN S-algebra identities..."];
+Print["[2/16] Verifying 39-state A_SN and 35-state A_HN S-algebra identities..."];
 Module[{dSN, dHN, x, y, z, lhs, rhs},
   dSN = PureSUniversality`Private`DeltaSN;
   dHN = PureSUniversality`Private`DeltaHN;
@@ -50,7 +50,7 @@ Module[{dSN, dHN, x, y, z, lhs, rhs},
   Print["  59,319 A_SN triples and 42,875 A_HN triples verified."];
 ];
 
-Print["[3/12] Verifying Question 7 infinite SN / non-SN flip-flop chain..."];
+Print["[3/16] Verifying Question 7 infinite SN / non-SN flip-flop chain..."];
 Module[{n, term, st},
   For[n = 0, n <= 8, n++,
     term = Question7FlipFlopTerm[n];
@@ -63,7 +63,7 @@ Module[{n, term, st},
   Print["  Question 7 terms M_0..M_8 alternate SN / non-SN as proved."];
 ];
 
-Print["[4/12] Verifying direct Pure-S simulation of 2-state Busy Beaver BB(2)..."];
+Print["[4/16] Verifying direct Pure-S simulation of 2-state Busy Beaver BB(2)..."];
 Module[{bb2, cur, steps = 0, sel},
   bb2 = <|
     {0, 0} -> {1, 1, 1},
@@ -86,7 +86,7 @@ Module[{bb2, cur, steps = 0, sel},
         PureSHaltAutomatonState[cur]];
 ];
 
-Print["[5/12] Verifying polynomial compilation CompileTuringMachineToPureS..."];
+Print["[5/16] Verifying polynomial compilation CompileTuringMachineToPureS..."];
 Module[{emptyTM, writeOneTM},
   emptyTM = CompileTuringMachineToPureS[<||>, 1, {}];
   AssertTrue[PureSLeafCount[emptyTM] === 1996921, "empty 1-state TM exact leaf count 1,996,921"];
@@ -96,7 +96,7 @@ Module[{emptyTM, writeOneTM},
   Print["  Polynomial compilation exact: 1,996,921 leaves (1-state) and 7,477,337 leaves (2-state)."];
 ];
 
-Print["[6/12] Verifying end-to-end U(3,11) -> Pure-S native halting & output readback..."];
+Print["[6/16] Verifying end-to-end U(3,11) -> Pure-S native halting & output readback..."];
 Module[{norm, enc, uTable, tape, st = 0, hd, ins, symBits, cur, sSteps = 0, out},
   norm = NormalizeNearySafe[<||>, 1, {1}];
   enc = EncodeNearyU311[norm["Rules"], norm["StateCount"], norm["MarkedWord"]];
@@ -126,7 +126,7 @@ Module[{norm, enc, uTable, tape, st = 0, hd, ins, symBits, cur, sSteps = 0, out}
         " S-contractions; DecodePureSOutput = ", out];
 ];
 
-Print["[7/12] Verifying 39-state A_P (Productivity) & 36-state A_36 (Question 31)..."];
+Print["[7/16] Verifying 39-state A_P (Productivity) & 36-state A_36 (Question 31)..."];
 Module[{dP, d36, x, y, z, aComb, aaa, zachos, wolfram2},
   dP = PureSUniversality`Private`DeltaP;
   d36 = PureSUniversality`Private`DeltaA36;
@@ -163,7 +163,7 @@ Module[{dP, d36, x, y, z, aComb, aaa, zachos, wolfram2},
   Print["  59,319 A_P triples, 46,656 A_36 triples, Zachos/Wolfram2, and Question 31 verified."];
 ];
 
-Print["[8/12] Verifying 4-state D_NAND & minimal 11-leaf Spine-1 NF Rule 110..."];
+Print["[8/16] Verifying 4-state D_NAND & minimal 11-leaf Spine-1 NF Rule 110..."];
 Module[{b0 = PureSFalseTerm, b1 = PureSTrueTerm, bx, by, bz, tx, ty, tz, out, exp, hist},
   Do[
     tx = If[bx === 1, b1, b0];
@@ -185,7 +185,7 @@ Module[{b0 = PureSFalseTerm, b1 = PureSTrueTerm, bx, by, bz, tx, ty, tz, out, ex
   Print["  11-leaf Pure-S Rule 110 truth table and 4-generation periodic evolution verified."];
 ];
 
-Print["[9/12] Verifying 8-state B_Zachos quadratic pure-line milestones n*(n+3)/2..."];
+Print["[9/16] Verifying 8-state B_Zachos quadratic pure-line milestones n*(n+3)/2..."];
 Module[{cur, hits = {}, step, ch},
   cur = ((s[s[s]])[s[s]])[(s[s[s]])[s[s]]];
   For[step = 0, step <= 60, step++,
@@ -197,7 +197,7 @@ Module[{cur, hits = {}, step, ch},
   Print["  B_Zachos quadratic step times under <= 60 steps: ", hits];
 ];
 
-Print["[10/12] Verifying Program-Free Pure-S Cyclic Tag System simulator (100% Lean 4 layout match)..."];
+Print["[10/16] Verifying Program-Free Pure-S Cyclic Tag System simulator (100% Lean 4 layout match)..."];
 Module[{cur, seedCur, sb = s[s[s]], fullOpen, writeVer, curP, pBody, curT, curQ, idx, app, bit, snaps, steps = 0, sel, st},
   cur = EncodeProgramFreeCTS[{{1}, {}}, {1, 0, 1}];
   (* Explicitly verify reachability & bit-for-bit equality from the 10-leaf seed (((s[sb])[sb])[s[s]])[s] *)
@@ -254,7 +254,7 @@ Module[{cur, seedCur, sb = s[s[s]], fullOpen, writeVer, curP, pBody, curT, curQ,
         " native S-contractions; 11-state Halt DTA state = ", PureSHaltAutomatonState[cur]];
 ];
 
-Print["[11/12] Verifying Wolfram Challenge 12 Benchmarks, Minimal Witnesses & Jump-Ahead Solver..."];
+Print["[11/16] Verifying Wolfram Challenge 12 Benchmarks, Minimal Witnesses & Jump-Ahead Solver..."];
 Module[{b12 = WolframChallenge12Benchmarks[], min7 = MinimalNonHaltingPureSTerms[], min9 = MinimalProductiveNonSNPureSTerm, out},
   AssertTrue[Length[b12] === 12, "12 Wolfram announcement benchmarks"];
   Do[
@@ -275,7 +275,7 @@ Module[{b12 = WolframChallenge12Benchmarks[], min7 = MinimalNonHaltingPureSTerms
   Print["  All 12 Wolfram benchmarks, 7-leaf minimal non-SN witnesses, and 9-leaf productive non-SN witness verified."];
 ];
 
-Print["[12/12] Verifying PureSAsymptoticConstants & PureSCatalanPhaseCensus through size 12..."];
+Print["[12/16] Verifying PureSAsymptoticConstants & PureSCatalanPhaseCensus through size 12..."];
 Module[{consts = PureSAsymptoticConstants[], census = PureSCatalanPhaseCensus[12]},
   AssertTrue[consts["HNLimitingDensityExact"] + consts["HeadDivergentDensityExact"] === 1,
     "Exact rational HN + NonHN densities sum to 1"];
@@ -290,6 +290,138 @@ Module[{consts = PureSAsymptoticConstants[], census = PureSCatalanPhaseCensus[12
              census[[12]]["ProductiveCount"] === 29513 && census[[12]]["HNCount"] === 46056,
     "Exact Catalan phase census through size 12"];
   Print["  Exact rational cHN = 4429673/7077888, degree-35 minimal polynomials, and n=1..12 census verified."];
+];
+
+Print["[13/16] Verifying PureSFunctionalOrder, Order3Count === 1, and exact rational order densities..."];
+Module[{dHN, ordTbl, q, k, tau, consts, census, aComb = (s[s])[s], aaa},
+  dHN = PureSUniversality`Private`DeltaHN;
+  ordTbl = PureSUniversality`Private`HNStateOrderTable;
+  tau[st_] := dHN[[st + 1, 35]];
+  For[q = 0, q < 35, q++,
+    For[k = 0, k <= 3, k++,
+      AssertTrue[(Nest[tau, q, k] === 34) === (ordTbl[[q + 1]] <= k),
+        "Functional order nilpotency law in A_HN"]
+    ]
+  ];
+  aaa = (aComb[aComb])[aComb];
+  AssertTrue[PureSFunctionalOrder[s] === 3 && PureSFunctionalOrder[s[s[s]]] === 3 &&
+             PureSFunctionalOrder[aComb] === 2 && PureSFunctionalOrder[(s[aComb])[s]] === 1 &&
+             PureSFunctionalOrder[aaa] === 0 && PureSJumpAheadOutcome[aaa]["FunctionalOrder"] === 0,
+    "Minimal functional order witnesses for orders 3, 2, 1, 0"];
+  consts = PureSAsymptoticConstants[];
+  AssertTrue[consts["Order0DensityExact"] === 2648215 / 7077888 &&
+             consts["Order1DensityExact"] === 1864553 / 7077888 &&
+             consts["Order2DensityExact"] === 835 / 2304 &&
+             consts["Order3DensityExact"] === 0 &&
+             consts["Order0DensityExact"] + consts["Order1DensityExact"] +
+               consts["Order2DensityExact"] + consts["Order3DensityExact"] === 1 &&
+             consts["Order1DensityExact"] + consts["Order2DensityExact"] +
+               consts["Order3DensityExact"] === consts["HNLimitingDensityExact"],
+    "Exact rational order densities c0 + c1 + c2 + c3 === 1"];
+  census = PureSCatalanPhaseCensus[12];
+  Do[
+    AssertTrue[row["Order3Count"] === 1 &&
+               row["Order1Count"] + row["Order2Count"] + row["Order3Count"] === row["HNCount"] &&
+               row["Order0Count"] + row["Order1Count"] + row["Order2Count"] + row["Order3Count"] === row["CatalanTotal"],
+      "Catalan functional order partition identities"],
+    {row, census}
+  ];
+  Print["  Functional order {0,1,2,3}, Order3Count === 1, and exact rational densities verified."];
+];
+
+Print["[14/16] Verifying PureSLeftSubtreeSum (Delta L = -2 & quarter-square law) and Garden-of-Eden NF census..."];
+Module[{trees, n, k, nfs, goes, nfCounts = {}, goeCounts = {}, cur, nxt, ch, lCur, lNxt, steps},
+  trees[1] = {s};
+  For[n = 2, n <= 7, n++,
+    trees[n] = Flatten[Table[Outer[#1[#2] &, trees[k], trees[n - k]], {k, 1, n - 1}], 2]
+  ];
+  For[n = 1, n <= 7, n++,
+    nfs = Select[trees[n], !PureSStepLeftmostOutermost[#][[2]] &];
+    goes = Select[trees[n], IsGardenOfEdenNormalFormQ];
+    AssertTrue[SubsetQ[nfs, goes], "Every Garden-of-Eden term is a closed normal form"];
+    AppendTo[nfCounts, Length[nfs]];
+    AppendTo[goeCounts, Length[goes]]
+  ];
+  AssertTrue[nfCounts === {1, 1, 2, 4, 9, 21, 51}, "Motzkin closed NF counts n=1..7"];
+  AssertTrue[goeCounts === {1, 1, 2, 3, 7, 15, 37}, "Garden-of-Eden isolated NF counts n=1..7"];
+  For[n = 2, n <= 12, n++,
+    cur = Nest[# [s] &, s, n - 1];
+    AssertTrue[PureSLeftSubtreeSum[cur] === Quotient[n * (n - 1), 2], "Initial left-comb L(S^n)"];
+    steps = 0;
+    While[True,
+      lCur = PureSLeftSubtreeSum[cur];
+      {nxt, ch} = PureSStepLeftmostOutermost[cur];
+      If[!ch, Break[]];
+      lNxt = PureSLeftSubtreeSum[nxt];
+      AssertTrue[PureSLeafCount[nxt] === n && lNxt - lCur === -2,
+        "Leaf-preserving step drops PureSLeftSubtreeSum by exact 2"];
+      cur = nxt;
+      steps++
+    ];
+    AssertTrue[steps === Quotient[(n - 2)^2, 4], "Quarter-square left-comb step law ((n-2)^2)//4"]
+  ];
+  Print["  PureSLeftSubtreeSum Delta L = -2, quarter-square law, and GoE census {1,1,2,3,7,15,37} verified."];
+];
+
+Print["[15/16] Verifying Question7AtomicSplitTerm[0..29] and Conjecture 40/42/43 witnesses..."];
+Module[{isAtomicSplitQ, prev, cur, n, ldiv, cex},
+  isAtomicSplitQ[s, expr_] := expr === s[s];
+  isAtomicSplitQ[u_, v_] := PureSAppQ[u] && PureSAppQ[v] && (
+    (Head[u] === Head[v] && isAtomicSplitQ[First[u], First[v]]) ||
+    (First[u] === First[v] && isAtomicSplitQ[Head[u], Head[v]])
+  );
+  For[n = 0, n <= 29, n++,
+    cur = Question7AtomicSplitTerm[n];
+    AssertTrue[PureSLeafCount[cur] === n + 1, "Question7AtomicSplitTerm leaf count n + 1"];
+    AssertTrue[(EvalSNState[cur] < 38) === (Mod[n, 10] =!= 9),
+      "Question7AtomicSplitTerm SN iff Mod[n, 10] != 9"];
+    If[n >= 1,
+      AssertTrue[isAtomicSplitQ[prev, cur], "Single atomic s -> s[s] leaf replacement"]
+    ];
+    prev = cur
+  ];
+  ldiv = MinimalLambdaDivergingPureSTerms[];
+  cex = Conjecture42And43Counterexamples[];
+  AssertTrue[PureSLeafCount[ldiv["W9"]] === 9 && EvalSNState[ldiv["W9"]] < 38 &&
+             PureSLeafCount[ldiv["N10"]] === 10 && !PureSStepLeftmostOutermost[ldiv["N10"]][[2]] &&
+             PureSLeafCount[ldiv["WaldmannW13"]] === 13 && !PureSStepLeftmostOutermost[ldiv["WaldmannW13"]][[2]],
+    "MinimalLambdaDivergingPureSTerms W9, N10, WaldmannW13 invariants"];
+  AssertTrue[PureSLeafCount[cex["M14"]] === 14 && PureSFunctionalOrder[cex["M14"]] === 1 &&
+             EvalSNState[cex["M14"]] < 38 &&
+             PureSLeafCount[cex["M15NF"]] === 15 && !PureSStepLeftmostOutermost[cex["M15NF"]][[2]] &&
+             PureSFunctionalOrder[cex["M15NF"]] === 1 && EvalSNState[cex["M15NF"]] < 38,
+    "Conjecture 42/43 counterexamples M14 and M15NF invariants"];
+  Print["  Question7AtomicSplitTerm[0..29] and W9 / N10 / WaldmannW13 / M14 / M15NF verified."];
+];
+
+Print["[16/16] Verifying all-step O(1) cubic leaf-count formulas (t = 0..80) & +14 twin shift..."];
+Module[{curZ, curW2, w2Base, curTwin, curSeed, t, ch},
+  curZ = ((s[s[s]])[s[s]])[(s[s[s]])[s[s]]];
+  curW2 = (((s[s])[s])[s[s[s]]])[s[s]];
+  w2Base = (s[s[s[s]]])[s[s]];
+  curTwin = w2Base[w2Base];
+  curSeed = (((s[s[s[s]]])[s[s[s]]])[s[s]])[s];
+  AssertTrue[EvalSNState[curTwin] === EvalSNState[curW2] &&
+             EvalHNState[curW2] === 24 && EvalHNState[curTwin] === 23 &&
+             PureSFunctionalOrder[curTwin] === PureSFunctionalOrder[curW2] &&
+             EvalProductivityState[curTwin] === EvalProductivityState[curW2],
+    "w2Twin matches wolfram_2 in A_SN, A_P, and FunctionalOrder (HN states 23 vs 24)"];
+  For[t = 0, t <= 80, t++,
+    AssertTrue[PureSLeafCount[curZ] === ZachosExactLeafCount[t], "ZachosExactLeafCount at step t"];
+    AssertTrue[PureSLeafCount[curW2] === Wolfram2ExactLeafCount[t], "Wolfram2ExactLeafCount at step t"];
+    AssertTrue[PureSLeafCount[curSeed] === TenLeafSeedExactLeafCount[t], "TenLeafSeedExactLeafCount at step t"];
+    If[t >= 3,
+      AssertTrue[PureSLeafCount[curTwin] === Wolfram2ExactLeafCount[t + 1] + 14,
+        "Wolfram2 vs w2Twin +14 shift law for t >= 3"]
+    ];
+    If[t < 80,
+      {curZ, ch} = PureSStepLeftmostOutermost[curZ]; AssertTrue[ch, "Zachos active"];
+      {curW2, ch} = PureSStepLeftmostOutermost[curW2]; AssertTrue[ch, "Wolfram2 active"];
+      {curTwin, ch} = PureSStepLeftmostOutermost[curTwin]; AssertTrue[ch, "w2Twin active"];
+      {curSeed, ch} = PureSStepLeftmostOutermost[curSeed]; AssertTrue[ch, "TenLeafSeed active"]
+    ]
+  ];
+  Print["  Exact O(1) cubic leaf counts and +14 twin shift verified across t = 0..80."];
 ];
 
 Print["ALL WOLFRAM PURE-S UNIVERSALITY CHECKS PASSED."];

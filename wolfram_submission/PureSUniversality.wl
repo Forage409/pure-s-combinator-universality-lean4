@@ -12,8 +12,10 @@
 (*      (matching Lean 4 haltAutomaton : BottomUpTreeAutomaton (Fin 11))      *)
 (*   4. Linear-Time Bare-Term Output Decoder                                  *)
 (*   5. Exact 39-State SN Algebra, 35-State HN Algebra (Open Problem 10),     *)
-(*      Linear-Time Root Normal Form Decider (Footnote 4), and Question 7     *)
-(*      Infinite SN / non-SN Refinement Chain                                 *)
+(*      Visser-van Oostrom Functional Order {0,1,2,3}, Linear-Time Root       *)
+(*      Normal Form & Garden-of-Eden Normal Form Deciders, Question 7         *)
+(*      Flip-Flop & Atomic Leaf-Splitting Chains, Conjectures 40/42/43        *)
+(*      Witnesses, and All-Step O(1) Cubic Leaf-Count Formulas                *)
 (* ========================================================================== *)
 
 BeginPackage["PureSUniversality`"];
@@ -39,8 +41,12 @@ DecodePureSOutput::usage = "DecodePureSOutput[expr] decodes the canonical output
 
 EvalSNState::usage = "EvalSNState[expr] evaluates the exact 39-state Strong Normalization S-algebra (states 0..37 normalizing, 38 non-normalizing).";
 EvalHNState::usage = "EvalHNState[expr] evaluates the exact 35-state Head Normalization S-algebra resolving Barendregt et al. (2018) Question 10 (states 0..33 HNF, 34 non-HNF).";
+PureSFunctionalOrder::usage = "PureSFunctionalOrder[expr] returns the exact Visser-van Oostrom functional order (0, 1, 2, or 3) of a closed pure-S expression via the 35-state algebra A_HN.";
+PureSLeftSubtreeSum::usage = "PureSLeftSubtreeSum[expr] returns the exact unfolded left-subtree leaf sum L(expr) (L(s) = 0, L(a[b]) = |a| + L(a) + L(b)) in O(|DAG|) time.";
 IsRootNormalFormQ::usage = "IsRootNormalFormQ[expr] decides Root Normal Form membership in linear time (Barendregt et al. 2018, Footnote 4).";
+IsGardenOfEdenNormalFormQ::usage = "IsGardenOfEdenNormalFormQ[expr] returns True iff expr is an isolated (Garden-of-Eden) closed pure-S normal form with in-degree 0 under S-reduction.";
 Question7FlipFlopTerm::usage = "Question7FlipFlopTerm[n] returns the n-th pure S term in the infinite refinement chain M_0 < M_1 < M_2 < ... alternating between SN (even n) and non-SN (odd n).";
+Question7AtomicSplitTerm::usage = "Question7AtomicSplitTerm[n] returns the (n + 1)-leaf pure-S term atomTerm[n] in the atomic s -> s[s] leaf-splitting sequence (strongly normalizing iff Mod[n, 10] != 9).";
 
 EvalProductivityState::usage = "EvalProductivityState[expr] evaluates the exact 39-state Bohm-tree productivity S-algebra A_P (state 37 non-productive; all other states productive).";
 IsProductivePureSQ::usage = "IsProductivePureSQ[expr] returns True iff expr has a productive (non-bottom) Bohm tree (EvalProductivityState[expr] =!= 37).";
@@ -59,9 +65,14 @@ DecodeProgramFreeCTSState::usage = "DecodeProgramFreeCTSState[expr] decodes {act
 WolframChallenge12Benchmarks::usage = "WolframChallenge12Benchmarks[] returns the exact 12 pure-S benchmark expressions from Stephen Wolfram's June 8, 2021 S Combinator Challenge announcement.";
 MinimalNonHaltingPureSTerms::usage = "MinimalNonHaltingPureSTerms[] returns {s[s][s][s[s]][s][s], s[s[s]][s][s][s][s]}, the unique minimal 7-leaf non-halting pure-S combinators.";
 MinimalProductiveNonSNPureSTerm::usage = "MinimalProductiveNonSNPureSTerm is s[s[s[s]]][s[s[s]]][s[s]], the unique minimal 9-leaf productive non-halting pure-S combinator.";
-PureSJumpAheadOutcome::usage = "PureSJumpAheadOutcome[expr] computes in O(|DAG|) always-halting time the exact asymptotic outcome (SN, HN, Productivity, RNF, and regime classification) of any pure-S expression.";
-PureSAsymptoticConstants::usage = "PureSAsymptoticConstants[] returns the exact macroscopic phase-transition constants of pure-S combinator space: exact rational cHN = 4429673/7077888, exact degree-35 minimal polynomials for rSN and rP, and 50-digit singularity constants.";
-PureSCatalanPhaseCensus::usage = "PureSCatalanPhaseCensus[maxLeaves] computes via exact S-algebra dynamic programming the Catalan phase counts {n, CatalanNumber[n-1], #SN(n), #AcceptP(n), #HN(n)} for leaf sizes 1..maxLeaves.";
+MinimalLambdaDivergingPureSTerms::usage = "MinimalLambdaDivergingPureSTerms[] returns <|\"W9\" -> ..., \"N10\" -> ..., \"WaldmannW13\" -> ...|>, the minimal closed pure-S terms whose lambda-translations have no beta-normal form.";
+Conjecture42And43Counterexamples::usage = "Conjecture42And43Counterexamples[] returns <|\"M14\" -> ..., \"M15NF\" -> ...|>, the minimal 14-leaf closed term and 15-leaf closed normal form refuting Barendregt et al. Conjectures 42 and 43.";
+ZachosExactLeafCount::usage = "ZachosExactLeafCount[t] returns in O(1) arithmetic the exact unfolded leaf count of Zachos's 10-leaf productive term after t >= 0 leftmost-outermost steps.";
+Wolfram2ExactLeafCount::usage = "Wolfram2ExactLeafCount[t] returns in O(1) arithmetic the exact unfolded leaf count of Wolfram Challenge benchmark #2 after t >= 0 leftmost-outermost steps.";
+TenLeafSeedExactLeafCount::usage = "TenLeafSeedExactLeafCount[t] returns in O(1) arithmetic the exact unfolded leaf count of the 10-leaf universal seed s[s[s[s]]][s[s[s]]][s[s]][s] after t >= 0 leftmost-outermost steps.";
+PureSJumpAheadOutcome::usage = "PureSJumpAheadOutcome[expr] computes in O(|DAG|) always-halting time the exact asymptotic outcome (SN, HN, FunctionalOrder, Productivity, RNF, and regime classification) of any pure-S expression.";
+PureSAsymptoticConstants::usage = "PureSAsymptoticConstants[] returns the exact macroscopic phase-transition constants of pure-S combinator space: exact rational cHN and Order 0..3 densities, degree-35 minimal polynomials for rSN and rP, and 50-digit singularity constants including gammaIsolatedNF50.";
+PureSCatalanPhaseCensus::usage = "PureSCatalanPhaseCensus[maxLeaves] computes via exact S-algebra dynamic programming the Catalan phase counts {n, CatalanNumber[n-1], #NF, #SN, #Prod, #HN, #Order0..3} for leaf sizes 1..maxLeaves.";
 
 Begin["`Private`"];
 
@@ -929,16 +940,51 @@ DeltaHN = BuildDeltaHN[];
 EvalHNState[expr_] :=
   PureSDAGFold[expr, 0, DeltaHN[[#1 + 1, #2 + 1]] &];
 
+HNStateOrderTable = {
+  3, 3, 3, 3, 3, 3,
+  2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+  1, 1, 1, 1, 1,
+  2,
+  1, 1, 1, 1, 1, 1,
+  0
+};
+
+PureSFunctionalOrder[expr_] := Module[{hn = EvalHNState[expr]},
+  If[IntegerQ[hn] && 0 <= hn <= 34, HNStateOrderTable[[hn + 1]], $Failed]
+];
+
+PureSLeftSubtreeSum[expr_] := Module[{pair},
+  pair = PureSDAGFold[expr, {1, 0}, {#1[[1]] + #2[[1]], #1[[1]] + #1[[2]] + #2[[2]]} &];
+  If[ListQ[pair], pair[[2]], $Failed]
+];
+
 IsRootNormalFormQ[expr_] :=
   Length[PureSSpine[expr]] <= 2 || EvalHNState[Head[expr]] === 34;
+
+IsGardenOfEdenNormalFormQ[expr_] := Module[{res},
+  If[!PureSAtomQ[expr] && !PureSAppQ[expr], Return[False]];
+  res = PureSDAGFold[
+    expr,
+    {True, 0, None, s},
+    Function[{lInfo, rInfo},
+      Which[
+        !lInfo[[1]] || !rInfo[[1]], {False, 3, None, None},
+        lInfo[[2]] === 0, {True, 1, rInfo[[4]], s[rInfo[[4]]]},
+        lInfo[[2]] === 1,
+          {!(rInfo[[2]] >= 1 && First[rInfo[[4]]] === lInfo[[3]]), 2, None, (lInfo[[4]])[rInfo[[4]]]},
+        True, {False, 3, None, None}
+      ]
+    ]
+  ];
+  ListQ[res] && TrueQ[res[[1]]]
+];
 
 Question7GadgetR[x_] := Module[{a = (s[s])[s]},
   ((x[a])[s])[a]
 ];
 
-Question7ChainWrap[0, tail_] := tail;
-Question7ChainWrap[k_Integer?Positive, tail_] :=
-  (s[Question7GadgetR[s[s]]])[Question7ChainWrap[k - 1, tail]];
+Question7ChainWrap[k_Integer?NonNegative, tail_] :=
+  Nest[(s[Question7GadgetR[s[s]]])[#] &, tail, k];
 
 Question7FlipFlopTerm[n_Integer?NonNegative] := Block[
   {$RecursionLimit = Infinity, $IterationLimit = Infinity},
@@ -946,6 +992,27 @@ Question7FlipFlopTerm[n_Integer?NonNegative] := Block[
     Question7ChainWrap[Quotient[n, 2], s],
     Question7ChainWrap[Quotient[n, 2], (s[Question7GadgetR[s]])[s]]
   ]
+];
+
+Question7AtomicPhase[phase_Integer] := Module[{a = (s[s])[s]},
+  Switch[phase,
+    0, s,
+    1, s[s],
+    2, a,
+    3, (s[s[s]])[s],
+    4, (s[a])[s],
+    5, (s[a[s]])[s],
+    6, (s[a[s[s]]])[s],
+    7, (s[a[a]])[s],
+    8, (s[((s[s[s]])[s])[a]])[s],
+    9, (s[Question7GadgetR[s]])[s],
+    _, $Failed
+  ]
+];
+
+Question7AtomicSplitTerm[n_Integer?NonNegative] := Block[
+  {$RecursionLimit = Infinity, $IterationLimit = Infinity},
+  Question7ChainWrap[Quotient[n, 10], Question7AtomicPhase[Mod[n, 10]]]
 ];
 
 
@@ -1529,11 +1596,72 @@ MinimalNonHaltingPureSTerms[] := {
 
 MinimalProductiveNonSNPureSTerm = s[s[s[s]]][s[s[s]]][s[s]];
 
+MinimalLambdaDivergingPureSTerms[] := Module[
+  {a = (s[s])[s], t = s[s], v},
+  v = s[(s[t])[t]];
+  <|
+    "W9" -> (s[s[a[a]]])[s],
+    "N10" -> (s[s[(s[a])[a]]])[s],
+    "WaldmannW13" -> (s[v])[v]
+  |>
+];
+
+Conjecture42And43Counterexamples[] := Module[
+  {a = (s[s])[s], w9, n10},
+  w9 = (s[s[a[a]]])[s];
+  n10 = (s[s[(s[a])[a]]])[s];
+  <|
+    "M14" -> (s[a])[s[w9]],
+    "M15NF" -> (s[a])[s[n10]]
+  |>
+];
+
+ZachosExactLeafCount[t_Integer?NonNegative] := Module[{n, r},
+  n = Quotient[Floor[Sqrt[8 * t + 9]] - 3, 2];
+  r = t - Quotient[n * (n + 3), 2];
+  10 + Quotient[2 * n * (n + 2) * (n + 4), 3] + If[r === 0, 0, r * (2 * n + 6) - 2]
+];
+
+Wolfram2ExactLeafCount[t_Integer?NonNegative] := Module[{d, n, r, intra},
+  Switch[t,
+    0, 8,
+    1, 10,
+    2, 11,
+    3, 16,
+    _,
+      d = t - 4;
+      n = Quotient[Floor[Sqrt[8 * d + 49]] - 7, 2];
+      r = d - Quotient[n * (n + 7), 2];
+      intra = Which[
+        r === 0, 0,
+        r === 1, 2 * n + 7,
+        r === 2, 4 * n + 16,
+        True, (8 * n + 33) + (r - 3) * (2 * n + 9)
+      ];
+      Quotient[4 * n^3 + 51 * n^2 + 197 * n + 138, 6] + intra
+  ]
+];
+
+TenLeafSeedExactLeafCount[t_Integer?NonNegative] := Module[{capN, d, r},
+  Switch[t,
+    0, 10,
+    1, 11,
+    _,
+      capN = Quotient[Floor[Sqrt[8 * t - 7]] + 1, 4];
+      d = t - (2 * capN^2 - capN + 1);
+      r = Quotient[d, 4];
+      Quotient[5 * capN^3 + 15 * capN^2 - 8 * capN + 33, 3] +
+        r * (6 * capN + 13 - r) +
+        If[Mod[d, 4] === 0, 0, 2 * capN + 4]
+  ]
+];
+
 PureSJumpAheadOutcome[expr_] := Module[
-  {leaves, sn, hn, pr, rnf, regime},
+  {leaves, sn, hn, ord, pr, rnf, regime},
   leaves = PureSLeafCount[expr];
   sn = EvalSNState[expr];
   hn = EvalHNState[expr];
+  ord = HNStateOrderTable[[hn + 1]];
   pr = EvalProductivityState[expr];
   rnf = IsRootNormalFormQ[expr];
   regime = Which[
@@ -1548,6 +1676,7 @@ PureSJumpAheadOutcome[expr_] := Module[
     "HaltsQ" -> (sn < 38),
     "HNState" -> hn,
     "HasHNFQ" -> (hn < 34),
+    "FunctionalOrder" -> ord,
     "ProductivityState" -> pr,
     "ProductiveQ" -> (pr =!= 37),
     "RootNormalFormQ" -> rnf,
@@ -1558,6 +1687,10 @@ PureSJumpAheadOutcome[expr_] := Module[
 PureSAsymptoticConstants[] := <|
   "HNLimitingDensityExact" -> 4429673 / 7077888,
   "HeadDivergentDensityExact" -> 2648215 / 7077888,
+  "Order0DensityExact" -> 2648215 / 7077888,
+  "Order1DensityExact" -> 1864553 / 7077888,
+  "Order2DensityExact" -> 835 / 2304,
+  "Order3DensityExact" -> 0,
   "SNMinimalPolynomialCoefficients" -> {
     -1, 7, -3, -73, 96, 386, -617, -1407, 2254, 3898, -5550, -8506,
     10034, 14894, -14408, -21828, 17659, 28887, -18321, -36011, 13358,
@@ -1576,11 +1709,15 @@ PureSAsymptoticConstants[] := <|
   "rP50" -> "0.29673733243763365737109465719898306195922977865696",
   "gammaP50" -> "3.3699837893170168052865469050899980331801238563045",
   "alphaP50" -> "4.1132143739052054851331007088613634200331206508689",
+  "rIsolatedNF50" -> "0.3439236474519548142748942256111023489386239900983329",
+  "gammaIsolatedNF50" -> "2.907622105687563237669436808726229885141380366153083",
   "ZachosDominanceHalfLifeLeaves" -> 36334.63
 |>;
 
 PureSCatalanPhaseCensus[maxLeaves_Integer?Positive] := Module[
-  {dpNF, dpSN, dpP, dpHN, n, k, a, b, rowSN, rowP, rowHN},
+  {dpNF, dpSN, dpP, dpHN, n, k, a, b, rowSN, rowP, rowHN,
+    ord1Idx = {23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34},
+    ord2Idx = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 28}},
   dpNF = ConstantArray[0, maxLeaves];
   dpSN = ConstantArray[0, {maxLeaves, 39}];
   dpP = ConstantArray[0, {maxLeaves, 39}];
@@ -1632,7 +1769,11 @@ PureSCatalanPhaseCensus[maxLeaves_Integer?Positive] := Module[
       "NFCount" -> dpNF[[m]],
       "SNCount" -> Total[Take[dpSN[[m]], 38]],
       "ProductiveCount" -> Total[Delete[dpP[[m]], 38]],
-      "HNCount" -> Total[Take[dpHN[[m]], 34]]
+      "HNCount" -> Total[Take[dpHN[[m]], 34]],
+      "Order0Count" -> dpHN[[m, 35]],
+      "Order1Count" -> Total[dpHN[[m, ord1Idx]]],
+      "Order2Count" -> Total[dpHN[[m, ord2Idx]]],
+      "Order3Count" -> Total[Take[dpHN[[m]], 6]]
     |>,
     {m, 1, maxLeaves}
   ]

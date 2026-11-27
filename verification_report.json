@@ -1,6 +1,6 @@
 {
   "status": "ALL_THEOREMS_AND_CERTIFICATES_VERIFIED",
-  "elapsed_seconds": 13.893,
+  "elapsed_seconds": 37.389,
   "sn_39_algebra": {
     "states": 39,
     "triples_verified": 59319,
@@ -272,5 +272,29 @@
     "asymptotics_dp_max_n": 150,
     "c_HN_exact_rational": "4429673/7077888",
     "open_question_5_pval_critical_triples_verified": 76699
+  },
+  "wave2_complete_open_problems_and_order_laws": {
+    "q10_pure_multiplier_B_zero_verified": true,
+    "q5_ph_nerode_minimal_states": 113,
+    "order_minimal_s_algebras": [
+      35,
+      12,
+      3
+    ],
+    "exact_order_densities_numerator_sum_7077888": true,
+    "q7_atomic_leaf_splits_0_to_29_verified": true,
+    "leaf_preserving_delta_L_minus_2_verified": true,
+    "conjectures_42_43_minimal_leaves": {
+      "W9": 9,
+      "N10": 10,
+      "M14": 14,
+      "M15_NF": 15
+    },
+    "question_32_waldmann_and_tower_family_verified": true,
+    "pocket_pf_transducer_state_tuple": [
+      25,
+      23,
+      136
+    ]
   }
 }

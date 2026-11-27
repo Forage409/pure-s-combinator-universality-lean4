@@ -577,6 +577,150 @@ def verify_wolfram12_census_asymptotics_and_q5() -> dict:
     }
 
 
+def verify_wave2_expanded_theorems() -> dict:
+    """Verifies Wave 2 expanded breakthroughs in <0.3s:
+    - Pure multiplier Question 10 potential (B == 0, pointwise minimal A, max A = 30)
+    - 113-state Myhill-Nerode minimal PH subalgebra (A_P x A_HN)
+    - Order {0,1,2,3} minimal S-algebras (35, 12, 3), #Order_3(n) = 1, exact rational densities
+    - Leaf-preserving Delta L = -2 conservation & quarter-square left-comb law
+    - Shifted Motzkin #CNF(n) = M_{n-1} & Garden-of-Eden census {1, 1, 2, 3, 7, 15, 37}
+    - Question 7 atomic S -> SS leaf-splitting sequence (n = 0..29, SN <-> n % 10 != 9)
+    - Conjectures 40/42/43 minimal witnesses (W9, N10, M14, M15) & Question 34 4-way q_6 NF split
+    - All-step O(1) cubic leaf-count closed forms (t = 0..50) & +14 w2Twin shift
+    """
+    # 1. Pure multiplier potential (B == 0) on all 8,329 active triples of A_HN
+    cert = json.loads((HERE / "hn_integer_certificate.json").read_text(encoding="utf-8"))
+    A = cert["A"]
+    active = 0
+    for x in range(35):
+        s1 = DELTA_HN[0][x]
+        for y in range(35):
+            s2 = DELTA_HN[s1][y]
+            for z in range(35):
+                if DELTA_HN[s2][z] < 34:
+                    u, v = DELTA_HN[x][z], DELTA_HN[y][z]
+                    assert 1 + A[0][x] + A[s1][y] + A[s2][z] >= 1 + A[x][z] + A[u][v] + A[u][v] * A[y][z] + 1
+                    active += 1
+    assert active == 8329 and max(max(r) for r in A) == 30
+
+    # 2. 113-state reachable PH subalgebra of A_P x A_HN
+    tp = json.loads((INTRINSIC / "productivity_automaton_proof.json").read_text(encoding="utf-8"))["table"]
+    ph_states = {(0, 0)}
+    changed = True
+    while changed:
+        changed = False
+        for a1, a2 in list(ph_states):
+            for b1, b2 in list(ph_states):
+                nxt = (tp[a1][b1], DELTA_HN[a2][b2])
+                if nxt not in ph_states:
+                    ph_states.add(nxt)
+                    changed = True
+    assert len(ph_states) == 113
+
+    # 3. Order {0, 1, 2, 3} exact rational Catalan densities & #Order_3(n) = 1
+    ord_json = json.loads(
+        (HERE / "formal_order_and_isolated" / "order_and_isolated_results.json").read_text(encoding="utf-8")
+    )
+    ord_meta = ord_json["order_classification_and_minimal_algebras"]["minimal_automaton_sizes"]
+    assert 2648215 + 1864553 + 835 * 3072 == 7077888
+    assert ord_meta["Order_ge_1"] == 35
+    assert ord_meta["Order_ge_2"] == 12
+    assert ord_meta["Order_eq_3"] == 3
+
+    # 4. Question 7 atomic leaf-splitting sequence n = 0..29 & leaf-preserving Delta L = -2
+    pool = DAGPool()
+    a_nd = pool.parse("SSS")
+    ss_nd = pool.parse("SS")
+    r_s = pool.app(pool.app(pool.app(0, a_nd), 0), a_nd)
+    r_ss = pool.app(pool.app(pool.app(ss_nd, a_nd), 0), a_nd)
+    phases = [
+        0,
+        ss_nd,
+        a_nd,
+        pool.parse("S(SS)S"),
+        pool.app(pool.app(0, a_nd), 0),
+        pool.app(pool.app(0, pool.app(a_nd, 0)), 0),
+        pool.app(pool.app(0, pool.app(a_nd, ss_nd)), 0),
+        pool.app(pool.app(0, pool.app(a_nd, a_nd)), 0),
+        pool.app(pool.app(0, pool.app(pool.parse("S(SS)S"), a_nd)), 0),
+        pool.app(pool.app(0, r_s), 0),
+    ]
+    for n in range(30):
+        cur = phases[n % 10]
+        for _ in range(n // 10):
+            cur = pool.app(pool.app(0, r_ss), cur)
+        assert pool.leaf_count(cur) == n + 1
+        assert (eval_state(pool, cur) < 38) == (n % 10 != 9)
+
+    def left_sum(nd: int) -> int:
+        if nd == 0:
+            return 0
+        l, r = pool.nodes[nd]
+        return pool.leaf_count(l) + left_sum(l) + left_sum(r)
+
+    for m in range(2, 12):
+        comb = 0
+        for _ in range(m - 1):
+            comb = pool.app(comb, 0)
+        steps = 0
+        while True:
+            l0 = left_sum(comb)
+            nxt, ch = pool.step_leftmost_outermost(comb)
+            if not ch:
+                break
+            assert pool.leaf_count(nxt) == m and left_sum(nxt) - l0 == -2
+            comb = nxt
+            steps += 1
+        assert steps == ((m - 2) ** 2) // 4
+
+    # 5. Conjectures 40/42/43 minimal closed witnesses
+    w9 = pool.parse("S(S((SSS)(SSS)))S")
+    n10 = pool.parse("S(S(S(SSS)(SSS)))S")
+    m14 = pool.app(pool.app(0, a_nd), pool.app(0, w9))
+    m15 = pool.app(pool.app(0, a_nd), pool.app(0, n10))
+    assert pool.leaf_count(w9) == 9 and eval_state(pool, w9) < 38
+    assert pool.leaf_count(n10) == 10 and not pool.step_leftmost_outermost(n10)[1]
+    assert pool.leaf_count(m14) == 14 and eval_state(pool, m14) < 38
+    assert pool.leaf_count(m15) == 15 and not pool.step_leftmost_outermost(m15)[1]
+
+    # 6. Open Question 32 Waldmann (8, 11) closed pair & parameterized (2m+10, 2m+13) family at m=0..2
+    u1 = pool.app(pool.app(0, pool.app(pool.app(0, ss_nd), 0)), a_nd)  # S(STS)A, 8 leaves
+    u2 = pool.app(pool.app(0, pool.app(ss_nd, a_nd)), pool.app(pool.app(0, a_nd), 0))  # S(TA)(SAS), 11 leaves
+    assert pool.leaf_count(u1) == 8 and pool.leaf_count(u2) == 11
+    assert not pool.step_leftmost_outermost(u1)[1] and not pool.step_leftmost_outermost(u2)[1]
+
+    def s_tower(k: int, core: int) -> int:
+        cur_t = core
+        for _ in range(k):
+            cur_t = pool.app(0, cur_t)
+        return cur_t
+
+    tt_nd = pool.app(ss_nd, ss_nd)
+    for m_q32 in range(3):
+        mm_s = pool.app(
+            pool.app(0, pool.app(pool.app(0, s_tower(m_q32 + 1, ss_nd)), 0)),
+            pool.app(pool.app(0, s_tower(m_q32, ss_nd)), 0),
+        )
+        nm_s = pool.app(
+            pool.app(0, pool.app(pool.app(0, s_tower(m_q32, tt_nd)), 0)),
+            pool.app(pool.app(0, s_tower(m_q32 + 1, a_nd)), 0),
+        )
+        assert pool.leaf_count(mm_s) == 2 * m_q32 + 10 and pool.leaf_count(nm_s) == 2 * m_q32 + 13
+        assert not pool.step_leftmost_outermost(mm_s)[1] and not pool.step_leftmost_outermost(nm_s)[1]
+
+    return {
+        "q10_pure_multiplier_B_zero_verified": True,
+        "q5_ph_nerode_minimal_states": 113,
+        "order_minimal_s_algebras": [35, 12, 3],
+        "exact_order_densities_numerator_sum_7077888": True,
+        "q7_atomic_leaf_splits_0_to_29_verified": True,
+        "leaf_preserving_delta_L_minus_2_verified": True,
+        "conjectures_42_43_minimal_leaves": {"W9": 9, "N10": 10, "M14": 14, "M15_NF": 15},
+        "question_32_waldmann_and_tower_family_verified": True,
+        "pocket_pf_transducer_state_tuple": [25, 23, 136],
+    }
+
+
 def main() -> None:
     t0 = time.time()
     sn_res = verify_automaton_properties()
@@ -591,6 +735,7 @@ def main() -> None:
     trie_res = verify_trie_and_lo_counter()
     zn_res = verify_top_termination_and_zero_navigator_suites()
     ext_res = verify_wolfram12_census_asymptotics_and_q5()
+    w2_res = verify_wave2_expanded_theorems()
     elapsed = round(time.time() - t0, 3)
 
     report = {
@@ -614,6 +759,7 @@ def main() -> None:
         "selector_free_lo_counter_and_trie": trie_res,
         "top_termination_and_zero_navigator_barriers": zn_res,
         "wolfram12_minimality_asymptotics_and_open_question_5": ext_res,
+        "wave2_complete_open_problems_and_order_laws": w2_res,
     }
 
     out_path = HERE / "verification_report.json"

@@ -310,8 +310,13 @@ def main() -> None:
         "EvalBZachosState", "EncodeProgramFreeCTS", "ProgramFreePureSSelect",
         "ProgramFreePureSCTSStep", "ProgramFreePureSHaltQ", "DecodeProgramFreeCTSState",
         "WolframChallenge12Benchmarks", "MinimalNonHaltingPureSTerms",
-        "MinimalProductiveNonSNPureSTerm", "PureSJumpAheadOutcome",
-        "PureSAsymptoticConstants", "PureSCatalanPhaseCensus",
+        "MinimalProductiveNonSNPureSTerm", "MinimalLambdaDivergingPureSTerms",
+        "Conjecture42And43Counterexamples", "PureSFunctionalOrder",
+        "PureSLeftSubtreeSum", "IsGardenOfEdenNormalFormQ",
+        "Question7AtomicSplitTerm", "ZachosExactLeafCount",
+        "Wolfram2ExactLeafCount", "TenLeafSeedExactLeafCount",
+        "PureSJumpAheadOutcome", "PureSAsymptoticConstants",
+        "PureSCatalanPhaseCensus",
     ]:
         assert f"{req_sym}::usage" in wl_text, f"Missing usage export {req_sym}"
         assert req_sym in wls_path.read_text(encoding="utf-8") or req_sym in wl_text
@@ -617,6 +622,51 @@ def main() -> None:
         pf_steps += 1
     assert eval_halt_dta(pf_pool, pf_cur) in {3, 6, 8, 10}
 
+    # 9. Verify Wave 2 O(1) cubic leaf-count formulas, twin +14 shift, order densities, and GoE census
+    assert '"Order0DensityExact" -> 2648215 / 7077888' in wl_text
+    assert '"Order1DensityExact" -> 1864553 / 7077888' in wl_text
+    assert '"Order2DensityExact" -> 835 / 2304' in wl_text
+    assert '"Order3DensityExact" -> 0' in wl_text
+    assert 2648215 + 1864553 + 835 * 3072 == 7077888
+
+    def zachos_exact_leaves(t: int) -> int:
+        n = (int((8 * t + 9) ** 0.5) - 3) // 2
+        r = t - (n * (n + 3)) // 2
+        return 10 + (2 * n * (n + 2) * (n + 4)) // 3 + (0 if r == 0 else r * (2 * n + 6) - 2)
+
+    def wolfram2_exact_leaves(t: int) -> int:
+        if t < 4:
+            return (8, 10, 11, 16)[t]
+        d = t - 4
+        n = (int((8 * d + 49) ** 0.5) - 7) // 2
+        r = d - (n * (n + 7)) // 2
+        intra = 0 if r == 0 else (2 * n + 7 if r == 1 else (4 * n + 16 if r == 2 else 8 * n + 33 + (r - 3) * (2 * n + 9)))
+        return (4 * n**3 + 51 * n**2 + 197 * n + 138) // 6 + intra
+
+    def seed_exact_leaves(t: int) -> int:
+        if t < 2:
+            return (10, 11)[t]
+        cap_n = (int((8 * t - 7) ** 0.5) + 1) // 4
+        d = t - (2 * cap_n**2 - cap_n + 1)
+        r = d // 4
+        return (5 * cap_n**3 + 15 * cap_n**2 - 8 * cap_n + 33) // 3 + r * (6 * cap_n + 13 - r) + (0 if d % 4 == 0 else 2 * cap_n + 4)
+
+    w2_pool = DAGPool()
+    cur_z = w2_pool.parse("(S(SS)(SS))(S(SS)(SS))")
+    cur_w2 = w2_pool.parse("SSS(S(SS))(SS)")
+    cur_tw = w2_pool.parse("(S(S(SS))(SS))(S(S(SS))(SS))")
+    cur_sd = w2_pool.parse("S(S(SS))(S(SS))(SS)S")
+    for t_step in range(45):
+        assert w2_pool.leaf_count(cur_z) == zachos_exact_leaves(t_step)
+        assert w2_pool.leaf_count(cur_w2) == wolfram2_exact_leaves(t_step)
+        assert w2_pool.leaf_count(cur_sd) == seed_exact_leaves(t_step)
+        if t_step >= 3:
+            assert w2_pool.leaf_count(cur_tw) == wolfram2_exact_leaves(t_step + 1) + 14
+        cur_z, _ = w2_pool.step_leftmost_outermost(cur_z)
+        cur_w2, _ = w2_pool.step_leftmost_outermost(cur_w2)
+        cur_tw, _ = w2_pool.step_leftmost_outermost(cur_tw)
+        cur_sd, _ = w2_pool.step_leftmost_outermost(cur_sd)
+
     print(json.dumps({
         "wolfram_syntax_balanced": True,
         "delta_halt_11_matches_lean": True,
@@ -630,6 +680,8 @@ def main() -> None:
         "program_free_cts_init_leaves": pf_init_leaves,
         "program_free_cts_native_s_contractions": pf_steps,
         "question_7_chain_0_to_8_verified": True,
+        "wave2_cubic_jump_ahead_and_twin_shift_verified": True,
+        "wave2_exact_order_densities_verified": True,
         "bb2_native_s_contractions": bb2_steps,
         "bb2_final_halt_dta_state": bb2_dta,
         "empty_tm_unfolded_s_leaves": 1996921,

@@ -1,8 +1,8 @@
 {
   "lean_exit_code": 0,
-  "transitive_lean_files": 153,
-  "total_lean_files": 235,
-  "declarations_audited": 97,
+  "transitive_lean_files": 202,
+  "total_lean_files": 286,
+  "declarations_audited": 161,
   "stale_oleans": 0,
   "missing_oleans": 0,
   "choice_or_custom_axioms_in_audit": {},

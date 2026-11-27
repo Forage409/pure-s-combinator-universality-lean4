@@ -60,7 +60,7 @@ def dfs(p: pathlib.Path):
             dfs(mp)
     order.append(p)
 
-for entry in ["s_challenge_master_headline.lean", "TRUST_ZERO_SPEC_CHECK.lean"]:
+for entry in ["SIMPLIFIED_Q31_Q7_BOOK_PROOFS.lean", "s_challenge_master_headline.lean", "TRUST_ZERO_SPEC_CHECK.lean"]:
     dfs(root / entry)
 
 print(f"Static hygiene passed across {len(order)} .lean modules.")
@@ -72,7 +72,7 @@ for idx, p in enumerate(order, 1):
     if proc.returncode != 0:
         sys.stderr.write(proc.stdout + "\n" + proc.stderr)
         sys.exit(proc.returncode)
-    if p.name in ("s_challenge_master_headline.lean", "TRUST_ZERO_SPEC_CHECK.lean"):
+    if p.name in ("SIMPLIFIED_Q31_Q7_BOOK_PROOFS.lean", "s_challenge_master_headline.lean", "TRUST_ZERO_SPEC_CHECK.lean"):
         for ln in proc.stdout.splitlines():
             m = re.match(r"^'([^']+)' depends on axioms: \[(.*)\]$", ln.strip())
             if m:

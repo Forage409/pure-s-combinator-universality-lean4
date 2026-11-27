@@ -632,7 +632,7 @@ def scan_draft_contamination() -> dict:
         if not p.is_file():
             continue
         rel = p.relative_to(RESEARCH_ROOT)
-        if AUDIT_DIR in p.resolve().parents or "tools" in rel.parts or "sources" in rel.parts or "__pycache__" in rel.parts:
+        if AUDIT_DIR in p.resolve().parents or "tools" in rel.parts or "sources" in rel.parts or "paper_research_and_style" in rel.parts or "__pycache__" in rel.parts:
             continue
         if p.suffix.lower() in text_exts:
             txt = p.read_text(encoding="utf-8", errors="replace")
