@@ -16,6 +16,16 @@ import formal_census_and_minimality.minimality_theorems
 import formal_asymptotics.asymptotic_laws
 import q5_sn_stratified_game.sn_stratified_game
 import formal_q5_final.q5_completeness
+import SIMPLIFIED_Q31_Q7_BOOK_PROOFS
+import formal_wolfram_frontier.wolfram_frontier_master
+import formal_lambda_conjectures.all_lambda_conjectures
+import formal_q32_equational.all_q32_theorems
+import formal_q30_q31_deep.master_q30_q31_deep
+import formal_q10_q5_simplified.q5_simplified
+import formal_order_and_isolated.all_order_and_isolated_theorems
+import formal_no_spiral.all_no_spiral_theorems
+import formal_conjecture17_obstructions.conjecture17_obstructions
+import formal_conjecture17_deep.minmaxrs_deep_obstructions
 
 /-!
 # Unified Master Headline Formalization: The Wolfram `S` Combinator Challenge
@@ -236,6 +246,103 @@ theorem step_iff_cellularStep {a b : Term} :
     | left _ ih => exact .left ih
     | right _ ih => exact .right ih
 
+
+
+/-- Exact AST bijection Term ↔ SimplifiedQ31Q7.Term. -/
+def toBookTerm : Term → SimplifiedQ31Q7.Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (toBookTerm a) (toBookTerm b)
+
+def ofBookTerm : SimplifiedQ31Q7.Term → Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (ofBookTerm a) (ofBookTerm b)
+
+theorem ofBook_toBook : ∀ t : Term, ofBookTerm (toBookTerm t) = t
+  | .s => rfl
+  | .var _ => rfl
+  | .app a b => by simp [toBookTerm, ofBookTerm, ofBook_toBook a, ofBook_toBook b]
+
+theorem step_iff_bookStep {a b : Term} :
+    Step a b ↔ SimplifiedQ31Q7.Step (toBookTerm a) (toBookTerm b) := by
+  constructor
+  · intro h
+    induction h with
+    | root x y z => exact .root (toBookTerm x) (toBookTerm y) (toBookTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
+  · intro h
+    rw [← ofBook_toBook a, ← ofBook_toBook b]
+    generalize toBookTerm a = a', toBookTerm b = b' at h
+    induction h with
+    | root x y z => exact .root (ofBookTerm x) (ofBookTerm y) (ofBookTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
+
+/-- Exact AST bijection Term ↔ FormalNoSpiral.Term (shared by ormal_no_spiral & ormal_conjecture17_deep). -/
+def toNoSpiralTerm : Term → FormalNoSpiral.Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (toNoSpiralTerm a) (toNoSpiralTerm b)
+
+def ofNoSpiralTerm : FormalNoSpiral.Term → Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (ofNoSpiralTerm a) (ofNoSpiralTerm b)
+
+theorem ofNoSpiral_toNoSpiral : ∀ t : Term, ofNoSpiralTerm (toNoSpiralTerm t) = t
+  | .s => rfl
+  | .var _ => rfl
+  | .app a b => by simp [toNoSpiralTerm, ofNoSpiralTerm, ofNoSpiral_toNoSpiral a, ofNoSpiral_toNoSpiral b]
+
+theorem step_iff_noSpiralStep {a b : Term} :
+    Step a b ↔ FormalNoSpiral.Step (toNoSpiralTerm a) (toNoSpiralTerm b) := by
+  constructor
+  · intro h
+    induction h with
+    | root x y z => exact .root (toNoSpiralTerm x) (toNoSpiralTerm y) (toNoSpiralTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
+  · intro h
+    rw [← ofNoSpiral_toNoSpiral a, ← ofNoSpiral_toNoSpiral b]
+    generalize toNoSpiralTerm a = a', toNoSpiralTerm b = b' at h
+    induction h with
+    | root x y z => exact .root (ofNoSpiralTerm x) (ofNoSpiralTerm y) (ofNoSpiralTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
+
+/-- Exact AST bijection Term ↔ FormalLambdaConjectures.Term. -/
+def toLambdaCLTerm : Term → FormalLambdaConjectures.Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (toLambdaCLTerm a) (toLambdaCLTerm b)
+
+def ofLambdaCLTerm : FormalLambdaConjectures.Term → Term
+  | .s => .s
+  | .var n => .var n
+  | .app a b => .app (ofLambdaCLTerm a) (ofLambdaCLTerm b)
+
+theorem ofLambdaCL_toLambdaCL : ∀ t : Term, ofLambdaCLTerm (toLambdaCLTerm t) = t
+  | .s => rfl
+  | .var _ => rfl
+  | .app a b => by simp [toLambdaCLTerm, ofLambdaCLTerm, ofLambdaCL_toLambdaCL a, ofLambdaCL_toLambdaCL b]
+
+theorem step_iff_lambdaCLStep {a b : Term} :
+    Step a b ↔ FormalLambdaConjectures.Step (toLambdaCLTerm a) (toLambdaCLTerm b) := by
+  constructor
+  · intro h
+    induction h with
+    | root x y z => exact .root (toLambdaCLTerm x) (toLambdaCLTerm y) (toLambdaCLTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
+  · intro h
+    rw [← ofLambdaCL_toLambdaCL a, ← ofLambdaCL_toLambdaCL b]
+    generalize toLambdaCLTerm a = a', toLambdaCLTerm b = b' at h
+    induction h with
+    | root x y z => exact .root (ofLambdaCLTerm x) (ofLambdaCLTerm y) (ofLambdaCLTerm z)
+    | left _ ih => exact .left ih
+    | right _ ih => exact .right ih
 
 /-! ## Section 2: Grand End-to-End Composed Pure-`S` Turing Machine Universality -/
 
@@ -504,6 +611,7 @@ theorem grand_open_question_5_and_bohm_game :
 
 /-! ## Section 7: Wolfram's 14 Benchmarks, Jump-Ahead Predictability & Catalan Minimality Thresholds -/
 
+set_option maxHeartbeats 800000 in
 /-- **Unified Wolfram 14-Expression Dichotomy, Jump-Ahead Predictability, and Sharp Small-Term
     Minimality Thresholds Theorem (`FormalWolfram12` + `FormalMinimality`)**:
     1. Complete 14-benchmark dichotomy (`7` immediate `.hn34`, `6` freezing `HN \ SN`, uniquely `1`
@@ -599,6 +707,141 @@ theorem grand_macroscopic_phase_transitions :
    FormalAsymptotics.hn_universal_two_sided_density_bounds,
    FormalAsymptotics.sn_and_acceptP_exponential_decay_to_zero⟩
 
+
+/-! ## Section 9: Two-Pass (25, 23, 136) Pocket Tree Transducer, All-Step →_{lo} Cubic Jump-Ahead & Garden-of-Eden Normal Forms -/
+
+theorem grand_pocket_transducer_and_lo_jump_ahead :
+    (∀ t : Term, FormalProgramFree.isClosedPureS t = true →
+      FormalWolframFrontier.pocketPFSelect t = FormalProgramFree.pfSelect t) ∧
+    (∀ P : FormalProgramFree.CTSProgram, ∀ w : List Bool,
+      FormalProgramFree.CTSEventuallyHalts P w ↔
+        ∃ k reached, FormalWolframFrontier.PocketPFTrace k (FormalProgramFree.encodeProgramFreeCTS P w) reached ∧
+          FormalWolframFrontier.pocketPFSelect reached = .halt) ∧
+    (∀ t : Term,
+      FormalWolframFrontier.pocketPFSteps t ≤ 2 * leaves t - 1 + FormalWolframFrontier.treeDepth t ∧
+      (∀ t', FormalWolframFrontier.pocketPFSelect t = .step t' →
+        FormalWolframFrontier.pocketPFSteps t + 2 ≤ 2 * leaves t - 1 + FormalWolframFrontier.treeDepth t)) ∧
+    (∀ t : Nat,
+      FormalAlgebra.iterateLO t FormalWolfram12.zachos = FormalWolframFrontier.zachosClosedFormTerm t ∧
+      FormalAlgebra.leaves (FormalAlgebra.iterateLO t FormalWolfram12.zachos) =
+        FormalWolframFrontier.zachosClosedFormLeaves t) ∧
+    (¬ FormalAlgebra.ConvS FormalWolfram12.wolfram_2 FormalWolframFrontier.w2Twin ∧
+      ∀ t : Nat, 3 ≤ t →
+        FormalAlgebra.leaves (FormalAlgebra.iterateLO (t + 1) FormalWolfram12.wolfram_2) + 14 =
+          FormalAlgebra.leaves (FormalAlgebra.iterateLO t FormalWolframFrontier.w2Twin)) ∧
+    (∀ {p : FormalAlgebra.Term}, FormalAlgebra.noVars p = true → FormalAlgebra.IsNormalForm p →
+      (FormalWolframFrontier.decideGardenOfEdenNF p = true ↔ FormalWolframFrontier.IsGardenOfEden p)) :=
+  ⟨FormalWolframFrontier.pocketPFSelect_eq_pfSelect,
+   fun P w => (FormalWolframFrontier.pocket_transducer_cts_universality P w).2.1,
+   (FormalWolframFrontier.pocket_transducer_cts_universality FormalProgramFree.ctsExampleEmptyHalt []).2.2.2.1,
+   FormalWolframFrontier.zachos_all_step_closed_form,
+   FormalWolframFrontier.wolfram2_vs_w2Twin_shift_14.2,
+   @FormalWolframFrontier.decideGardenOfEdenNF_iff⟩
+
+
+/-! ## Section 10: Leaf-Preserving ΔL = -2 Conservation Law, Constructive No-Spiral & Conjecture 17 Obstructions -/
+
+theorem grand_conjecture17_and_leaf_preserving_suite :
+    (∀ {a b : FormalAlgebra.Term}, FormalOrderAndIsolated.LeafPresStep a b →
+      FormalOrderAndIsolated.leftSubtreeSum a = FormalOrderAndIsolated.leftSubtreeSum b + 2) ∧
+    (∀ t : FormalAlgebra.Term, Acc (fun b a => FormalOrderAndIsolated.LeafPresStep a b) t) ∧
+    (∀ {n : Nat}, 2 ≤ n →
+      FormalOrderAndIsolated.LeafPresStepsN (((n - 2) * (n - 2)) / 4)
+        (FormalOrderAndIsolated.leftComb n) (FormalOrderAndIsolated.leftCombLPNF n) ∧
+      FormalOrderAndIsolated.IsLeafPresNF (FormalOrderAndIsolated.leftCombLPNF n)) ∧
+    (∀ M C σ,
+      (∀ x, FormalNoSpiral.hasVar x M = true →
+        ¬ (FormalNoSpiral.rightLeaf (σ x) = .var x ∧ 1 ≤ FormalNoSpiral.rs (σ x))) →
+      ¬ FormalNoSpiral.StepPlus M (FormalNoSpiral.plugCtx C (FormalNoSpiral.subst σ M))) ∧
+    (∀ x M C σ,
+      (∀ v, FormalNoSpiral.hasVar v M = true → v = x) →
+      FormalNoSpiral.countVar x (σ x) ≤ 1 →
+      FormalNoSpiral.countVarCtx x C = 0 →
+      ¬ FormalNoSpiral.StepPlus M (FormalNoSpiral.plugCtx C (FormalNoSpiral.subst σ M))) ∧
+    ((∀ M C σ, ¬ FormalNoSpiral.StepPlus M (FormalNoSpiral.plugCtx C (FormalNoSpiral.subst σ M))) ↔
+      (∀ M σ, ¬ (FormalNoSpiral.DPChain M (FormalNoSpiral.subst σ M) ∧
+        FormalNoSpiral.rs M < FormalNoSpiral.rs (FormalNoSpiral.subst σ M)))) ∧
+    (∀ m c σ, ¬ ∃ m1, FormalTopTermination.Step m m1 ∧
+      FormalTopTermination.Step m1 (Conjecture17Obstructions.plugCtx c (FormalTopTermination.subst σ m))) :=
+  ⟨@FormalOrderAndIsolated.leftSubtreeSum_leafPresStep,
+   FormalOrderAndIsolated.leafPres_sn,
+   @FormalOrderAndIsolated.leftComb_leafPres_quarter_square,
+   FormalNoSpiral.conjecture17_no_open_spiral_unless_self_right_tail,
+   FormalNoSpiral.conjecture17_one_var_linear_subst_arbitrary_M,
+   FormalNoSpiral.conjecture17_iff_no_dpChain_spiral,
+   Conjecture17Obstructions.no_two_step_open_spiral⟩
+
+
+/-! ## Section 11: Automaton-Free Book Proofs, Optimal hnA Multiplier, 113-State PH Minimality, Productive Böhm Faithfulness & Functional Orders {0, 1, 2, 3} -/
+
+theorem grand_simplified_algebras_bohm_and_orders :
+    (∀ {j k : Nat}, j ≠ k →
+      ¬ SimplifiedQ31Q7.ConvS (SimplifiedQ31Q7.appS SimplifiedQ31Q7.AAA j)
+                              (SimplifiedQ31Q7.appS SimplifiedQ31Q7.AAA k)) ∧
+    (∀ n : Nat, SimplifiedQ31Q7.StrongNormalizing (SimplifiedQ31Q7.atomTerm n) ↔ n % 10 ≠ 9) ∧
+    (∀ {t : FormalAlgebra.Term}, FormalAlgebra.noVars t = true →
+      (FormalAlgebra.HasHNF t ↔ SimplifiedQ10Q5.StrongHeadNormalizing t)) ∧
+    (∀ {A' : SimplifiedQ10Q5.StateHN → SimplifiedQ10Q5.StateHN → Nat},
+      SimplifiedQ10Q5.IsValidHNA A' → ∀ u v, SimplifiedQ10Q5.hnA u v ≤ A' u v) ∧
+    (∀ {t1 t2 : FormalAlgebra.Term},
+      FormalAlgebra.noVars t1 = true → FormalAlgebra.noVars t2 = true →
+      SimplifiedQ10Q5.evalPH t1 ≠ SimplifiedQ10Q5.evalPH t2 →
+      ∃ k, k < 17 ∧
+        ¬ ((SimplifiedQ10Q5.Productive (SimplifiedQ10Q5.applySepCtx k t1) ↔
+              SimplifiedQ10Q5.Productive (SimplifiedQ10Q5.applySepCtx k t2)) ∧
+           (FormalAlgebra.HasHNF (SimplifiedQ10Q5.applySepCtx k t1) ↔
+              FormalAlgebra.HasHNF (SimplifiedQ10Q5.applySepCtx k t2)))) ∧
+    (∀ {m n : FormalAlgebra.Term},
+      FormalAlgebra.noVars m = true → FormalAlgebra.noVars n = true →
+      Q5SNStratifiedGame.Productive m →
+      ((∀ d : Nat, FormalQ30Q31Deep.bohmApprox d m = FormalQ30Q31Deep.bohmApprox d n) ↔
+        FormalAlgebra.ConvS m n)) ∧
+    (∀ m : FormalAlgebra.Term,
+      FormalOrderAndIsolated.HasExactOrder m 0 ∨ FormalOrderAndIsolated.HasExactOrder m 1 ∨
+      FormalOrderAndIsolated.HasExactOrder m 2 ∨ FormalOrderAndIsolated.HasExactOrder m 3) ∧
+    (∀ {n : Nat}, 1 ≤ n → FormalOrderAndIsolated.countOrder3 n = 1) :=
+  ⟨@SimplifiedQ31Q7.question_31_infinite_family,
+   SimplifiedQ31Q7.question_7_atomic_leaf_splits.2.2.2,
+   @SimplifiedQ10Q5.hasHNF_iff_strongHeadNormalizing,
+   @SimplifiedQ10Q5.hnA_pointwise_minimal,
+   @SimplifiedQ10Q5.ph_113_nerode_minimal,
+   @FormalQ30Q31Deep.productive_oneSided_bohm_iff_convS,
+   FormalOrderAndIsolated.visser_van_oostrom_exact_order_exhaustion,
+   @FormalOrderAndIsolated.countOrder3_eq_one⟩
+
+
+/-! ## Section 12: λI-Translation, Conjecture 40 (True), Conjectures 42 & 43 (Refuted + Repaired), Question 34 Single-Constant Collapse, & Question 32 Negative Resolution -/
+
+theorem grand_lambda_conjectures_and_equational_suite :
+    (∀ {m : FormalLambdaConjectures.Lam}, FormalLambdaConjectures.isLambdaI m = true →
+      (FormalLambdaConjectures.HasBetaNF m ↔ FormalLambdaConjectures.StrongNormalizingBeta m)) ∧
+    (∀ m : FormalLambdaConjectures.CLTerm, ∀ n : Nat,
+      FormalLambdaConjectures.CLOrder m n ↔ FormalLambdaConjectures.LamOrder (FormalLambdaConjectures.clToLam m) n) ∧
+    (¬ (∀ m : FormalLambdaConjectures.Term,
+      FormalLambdaConjectures.HasNormalForm (m ⋅ .var 0 ⋅ .var 1 ⋅ .var 2) ↔
+        FormalLambdaConjectures.HasBetaNF (FormalLambdaConjectures.toLam m))) ∧
+    (∀ m : FormalLambdaConjectures.Term,
+      FormalLambdaConjectures.DeepCLNorm m ↔ FormalLambdaConjectures.HasBetaNF (FormalLambdaConjectures.toLam m)) ∧
+    (∀ {m : FormalLambdaConjectures.Term}, FormalLambdaConjectures.noVars m = true →
+      ((FormalLambdaConjectures.StrongNormalizingBeta (FormalLambdaConjectures.toLam m) ↔
+          FormalLambdaConjectures.DeepNorm1 m) ∧
+       (FormalLambdaConjectures.HasBetaNF (FormalLambdaConjectures.toLam m) ↔
+          FormalLambdaConjectures.DeepNorm1 m))) ∧
+    (∀ {u v : FormalLambdaConjectures.Term},
+      ¬ FormalLambdaConjectures.StrongNormalizingBeta (FormalLambdaConjectures.toLam u) →
+      ¬ FormalLambdaConjectures.StrongNormalizingBeta (FormalLambdaConjectures.toLam v) →
+      FormalLambdaConjectures.NerodeEq34 u v) ∧
+    (¬ ∃ E : List (FormalAlgebra.Term × FormalAlgebra.Term),
+      ∀ M N : FormalAlgebra.Term,
+        FormalQ32.EqTheoryDerives E M N ↔ FormalQ32.ConvBeta (FormalQ32.toLam M) (FormalQ32.toLam N)) :=
+  ⟨@FormalLambdaConjectures.lambdaI_wn_iff_sn,
+   FormalLambdaConjectures.conjecture_40_full_cl,
+   FormalLambdaConjectures.conjecture_42_false,
+   FormalLambdaConjectures.repaired_conjecture_42,
+   @FormalLambdaConjectures.question_34_iff_single_constant_saturation,
+   @FormalLambdaConjectures.question_34_unique_absorbing_sink,
+   FormalQ32.no_finite_equational_axiomatization_of_lambda_beta⟩
+
 end SChallengeMaster
 
 -- Unified Kernel Axiom Audit Across All Composed Master Theorems
@@ -621,3 +864,11 @@ end SChallengeMaster
 #print axioms ZeroNavigatorMultiway.decideConvClosedSN
 #print axioms FormalQ5Final.barendregt_open_question_5
 #print axioms FormalQ5Final.productive_or_hasBot_closed
+
+#print axioms SChallengeMaster.step_iff_bookStep
+#print axioms SChallengeMaster.step_iff_noSpiralStep
+#print axioms SChallengeMaster.step_iff_lambdaCLStep
+#print axioms SChallengeMaster.grand_pocket_transducer_and_lo_jump_ahead
+#print axioms SChallengeMaster.grand_conjecture17_and_leaf_preserving_suite
+#print axioms SChallengeMaster.grand_simplified_algebras_bohm_and_orders
+#print axioms SChallengeMaster.grand_lambda_conjectures_and_equational_suite
